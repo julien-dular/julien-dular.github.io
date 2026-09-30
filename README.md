@@ -32,7 +32,7 @@ Then visit [http://localhost:8000](http://localhost:8000).
 
 ## Editing publications
 
-Edit `data/publications.yaml`. Entries are grouped by category (`first-author`, `second-author`, `oral-presentations`, `posters`). Set `main: true` on an entry to show it in the "Main Publications" section of the home page. Optional `links` (list of `label` / `url`) are rendered as buttons under the entry.
+Edit `data/publications.yaml`. Entries are grouped by category (`first-author`, `co-author`, `oral-presentations`, `posters`). Set `main: true` on an entry to show it in the "Main Publications" section of the home page. Optional `links` (list of `label` / `url`) are rendered as buttons under the entry.
 
 ## Adding a project
 

@@ -20,7 +20,7 @@
 
   const publicationIds = [
     "first-author",
-    "second-author",
+    "co-author",
     "oral-presentations",
     "posters",
   ];

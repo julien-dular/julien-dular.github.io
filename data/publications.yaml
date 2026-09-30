@@ -38,20 +38,21 @@ categories:
         authors: "<strong>J. Dular</strong>"
         venue: PhD dissertation, University of Liège, Belgium.
       - year: 2022
-        main: true
         title: "What Formulation Should One Choose for Modeling a 3D HTS Motor Pole with Ferromagnetic Materials?"
         authors: "<strong>J. Dular</strong>, K. Berger, C. Geuzaine, B. Vanderheyden"
         venue: "<em>IEEE Transactions on Magnetics</em>, vol. 58, no. 9, pp. 1–4, Art. no. 8205204."
       - year: 2021
+        main: true
         title: "On the Stability of Mixed Finite-Element Formulations for High-Temperature Superconductors"
         authors: "<strong>J. Dular</strong>, M. Harutyunyan, L. Bortot, S. Schöps, B. Vanderheyden, C. Geuzaine"
         venue: "<em>IEEE Transactions on Applied Superconductivity</em>, vol. 31, no. 6, pp. 1–12, Art. no. 8200412."
       - year: 2019
+        main: true
         title: "Finite Element Formulations for Systems with High-Temperature Superconductors"
         authors: "<strong>J. Dular</strong>, C. Geuzaine, B. Vanderheyden"
         venue: "<em>IEEE Transactions on Applied Superconductivity</em>, vol. 30, no. 3, pp. 1–13, Art. no. 8200113."
-  - id: second-author
-    title: Publications as Second Author
+  - id: co-author
+    title: Publications as Co-Author
     items:
       - year: 2026
         title: "Critical Current and Magnetization Scaling of Nb3Sn Wires: Measurements and Simulations from Exact Wire Geometries"
