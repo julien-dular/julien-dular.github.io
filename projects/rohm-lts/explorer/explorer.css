@@ -1,0 +1,634 @@
+/* Styles of <rohm-explorer>. Loaded inside its shadow root only, so nothing here reaches the host page.
+   Colors and fonts follow the host page's tokens when they exist (custom properties inherit through the
+   shadow boundary), with fallbacks so the module also works on its own. */
+
+:host {
+  display: block;
+  container-type: inline-size;
+  --rx-text: var(--color-text, #1a1a2e);
+  --rx-muted: var(--color-text-muted, #5c5c6e);
+  --rx-border: var(--color-border, #ddd8d0);
+  --rx-surface: var(--color-surface, #ffffff);
+  --rx-bg-alt: var(--color-bg-alt, #f0ede8);
+  --rx-accent: var(--color-accent, #2d4a7c);
+  --rx-highlight: var(--color-highlight, #c4a35a);
+  --rx-radius: var(--radius, 6px);
+  --rx-font: var(--font-sans, system-ui, -apple-system, "Segoe UI", sans-serif);
+  --rx-font-serif: var(--font-serif, Georgia, serif);
+  /* Chart chrome and series (validated as a set on the white surface) */
+  --rx-grid: #eeebe6;
+  --rx-axis: #c9c4bb;
+  --rx-input: #898781;
+  --rx-hyst: #2a78d6;
+  --rx-coupling: #1baf7a;
+  --rx-eddy: #eb6834;
+  font-family: var(--rx-font);
+  color: var(--rx-text);
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.rx {
+  background: var(--rx-surface);
+  border: 1px solid var(--rx-border);
+  border-radius: var(--rx-radius);
+  padding: 1.25rem;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.rx-head-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.rx-head h2 {
+  font-family: var(--rx-font-serif);
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Explore / Learn switch */
+.rx-seg {
+  display: inline-flex;
+  border: 1px solid var(--rx-border);
+  border-radius: var(--rx-radius);
+  overflow: hidden;
+}
+
+.rx-seg button {
+  font: inherit;
+  font-size: 0.875rem;
+  border: 0;
+  background: var(--rx-surface);
+  color: var(--rx-text);
+  padding: 0.35rem 0.85rem;
+  cursor: pointer;
+}
+
+.rx-seg button + button {
+  border-left: 1px solid var(--rx-border);
+}
+
+.rx-seg button[aria-pressed="true"] {
+  background: var(--rx-accent);
+  color: #fff;
+}
+
+/* Guided tour */
+.rx-tour {
+  margin: 0 0 1.25rem;
+  padding: 1rem 1.1rem;
+  background: var(--rx-bg-alt);
+  border-radius: var(--rx-radius);
+}
+
+.rx-step-count {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rx-muted);
+}
+
+.rx-tour h3 {
+  font-family: var(--rx-font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0.15rem 0 0.5rem;
+}
+
+.rx-tour-body p {
+  margin: 0 0 0.6rem;
+  max-width: 70ch;
+}
+
+.rx-details {
+  margin: 0.25rem 0 0;
+  font-size: 0.95rem;
+}
+
+.rx-details summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--rx-accent);
+}
+
+.rx-tour-details {
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.9rem 0.5rem;
+  background: var(--rx-surface);
+  border-radius: var(--rx-radius);
+  overflow-x: auto;
+}
+
+.rx-tour-details p {
+  margin: 0.6rem 0;
+  max-width: 70ch;
+}
+
+.rx-tour math[display="block"] {
+  margin: 0.6rem 0;
+  font-size: 1.05em;
+}
+
+.rx-ref {
+  font-size: 0.85rem;
+  color: var(--rx-muted);
+}
+
+.rx-tour-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.9rem;
+}
+
+.rx-button {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--rx-radius);
+  border: 1px solid var(--rx-border);
+  background: var(--rx-surface);
+  color: var(--rx-text);
+  cursor: pointer;
+}
+
+.rx-button-primary {
+  background: var(--rx-accent);
+  border-color: var(--rx-accent);
+  color: #fff;
+}
+
+.rx-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.rx-head p {
+  margin: 0 0 1rem;
+  color: var(--rx-muted);
+}
+
+/* Controls: one row above the plots, wrapping on narrow screens */
+.rx-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  align-items: flex-end;
+}
+
+.rx-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  min-width: 0;
+}
+
+.rx-field > span:first-child {
+  color: var(--rx-muted);
+  font-weight: 500;
+}
+
+.rx-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding-bottom: 0.3rem;
+  cursor: pointer;
+}
+
+.rx-check input {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin: 0;
+  accent-color: var(--rx-accent);
+  cursor: pointer;
+}
+
+.rx-check-small {
+  font-size: 0.875rem;
+  padding-bottom: 0;
+}
+
+.rx-inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.9rem;
+}
+
+/* Custom values table */
+.rx-params {
+  margin: 1rem 0 0;
+}
+
+.rx-hint {
+  margin: 0 0 0.4rem;
+  font-size: 0.85rem;
+  color: var(--rx-muted);
+}
+
+.rx-table-wrap {
+  max-height: 20rem;
+  overflow: auto;
+  border: 1px solid var(--rx-border);
+  border-radius: var(--rx-radius);
+}
+
+.rx-table {
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  width: 100%;
+}
+
+.rx-table th,
+.rx-table td {
+  padding: 0.2rem 0.4rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.rx-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--rx-bg-alt);
+  font-weight: 600;
+  z-index: 1;
+}
+
+.rx-table tbody th {
+  color: var(--rx-muted);
+  font-weight: 500;
+  width: 2.5rem;
+}
+
+.rx-table tbody tr + tr {
+  border-top: 1px solid var(--rx-grid);
+}
+
+.rx-unit {
+  font-weight: 400;
+  color: var(--rx-muted);
+}
+
+.rx-num {
+  font: inherit;
+  width: 6.5rem;
+  padding: 0.15rem 0.4rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--rx-text);
+  cursor: ew-resize;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.rx-num:hover {
+  border-color: var(--rx-border);
+  background: var(--rx-surface);
+}
+
+.rx-num:focus {
+  cursor: text;
+  user-select: text;
+  background: var(--rx-surface);
+  border-color: var(--rx-accent);
+}
+
+.rx-num.is-dragging {
+  background: color-mix(in srgb, var(--rx-accent) 10%, var(--rx-surface));
+  border-color: var(--rx-accent);
+}
+
+.rx-num.is-invalid {
+  border-color: #d03b3b;
+}
+
+.rx-remove {
+  font: inherit;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--rx-muted);
+  cursor: pointer;
+}
+
+.rx-remove:hover:not(:disabled) {
+  background: var(--rx-bg-alt);
+  color: var(--rx-text);
+}
+
+.rx-remove:disabled {
+  visibility: hidden;
+}
+
+.rx-table-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 1.25rem;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.rx-link-button {
+  font: inherit;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--rx-accent);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.rx-sum {
+  color: var(--rx-muted);
+}
+
+.rx-sum.is-off {
+  color: var(--rx-text);
+}
+
+.rx-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+select {
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--rx-text);
+  background: var(--rx-surface);
+  border: 1px solid var(--rx-border);
+  border-radius: var(--rx-radius);
+  padding: 0.3rem 0.5rem;
+  max-width: 100%;
+}
+
+.rx-slider {
+  flex: 1 1 11rem;
+  max-width: 16rem;
+}
+
+.rx-slider .rx-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rx-slider output {
+  min-width: 4.5rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+input[type="range"] {
+  flex: 1;
+  min-width: 0;
+  accent-color: var(--rx-accent);
+}
+
+input[type="range"]:disabled + output,
+.rx-field.is-disabled > span:first-child {
+  opacity: 0.5;
+}
+
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+summary:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--rx-accent);
+  outline-offset: 2px;
+}
+
+.rx-desc {
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+  color: var(--rx-muted);
+}
+
+/* Sliders and play bar: stick below the host page's sticky header (--header-height) while the plots
+   scroll, within the explorer only */
+.rx-sticky {
+  position: sticky;
+  top: var(--header-height, 0px);
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: flex-end;
+  margin: 1rem -1.25rem 1.25rem;
+  padding: 0.6rem 1.25rem 0.7rem;
+  background: var(--rx-surface);
+  border-top: 1px solid var(--rx-border);
+  border-bottom: 1px solid var(--rx-border);
+}
+
+.rx-sticky .rx-slider {
+  flex: 1 1 12rem;
+  max-width: none;
+}
+
+/* Note on internal vs applied field */
+.rx-note {
+  margin: 1.5rem 0 0;
+  padding: 0.6rem 0.9rem;
+  border-left: 3px solid var(--rx-highlight);
+  background: var(--rx-bg-alt);
+  border-radius: 0 var(--rx-radius) var(--rx-radius) 0;
+  font-size: 0.9rem;
+}
+
+.rx-note summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.rx-note p {
+  margin: 0.4rem 0 0;
+}
+
+.rx-note a {
+  color: var(--rx-accent);
+}
+
+/* Play bar */
+.rx-play {
+  flex: 2 1 18rem;
+}
+
+.rx-play .rx-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rx-play button {
+  font: inherit;
+  font-size: 0.8rem;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  border: 1px solid var(--rx-border);
+  background: var(--rx-surface);
+  color: var(--rx-accent);
+  cursor: pointer;
+  flex: none;
+}
+
+.rx-play output {
+  min-width: 7rem;
+  color: var(--rx-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Plots: one column, two from 720 px of available width */
+.rx-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem 1.5rem;
+}
+
+@container (min-width: 720px) {
+  .rx-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.rx-plot {
+  margin: 0;
+  min-width: 0;
+}
+
+.rx-plot h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.rx-plot .rx-sub {
+  margin: 0.1rem 0 0.4rem;
+  font-size: 0.85rem;
+  color: var(--rx-muted);
+}
+
+.rx-canvas {
+  width: 100%;
+  touch-action: pan-y;
+}
+
+.rx-canvas canvas {
+  display: block;
+}
+
+/* Legend with values at the current moment; the line key carries the series color, text stays ink */
+.rx-readout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 1rem;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.85rem;
+  color: var(--rx-muted);
+}
+
+.rx-readout li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Legend keys mirror the marks; their color comes from --c */
+.rx-readout .key {
+  display: inline-block;
+  flex: none;
+}
+
+.rx-readout .key-line {
+  width: 14px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--c);
+}
+
+.rx-readout .key-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--c);
+}
+
+.rx-readout .key-box {
+  width: 16px;
+  height: 10px;
+  border: 1.5px solid var(--c);
+  background: color-mix(in srgb, var(--c) 18%, transparent);
+}
+
+.rx-plot.is-wide {
+  grid-column: 1 / -1;
+}
+
+.rx-readout strong {
+  color: var(--rx-text);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.rx-foot {
+  margin: 1rem 0 0;
+  font-size: 0.8rem;
+  color: var(--rx-muted);
+}
+
+.rx-foot a {
+  color: var(--rx-accent);
+}
+
+/* AI assistance notice: gentle, separated from the references by a hairline */
+.rx-ai {
+  margin: 0.75rem 0 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--rx-border);
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--rx-muted);
+}
+
+.rx-error {
+  color: var(--rx-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rx-play button {
+    transition: none;
+  }
+}

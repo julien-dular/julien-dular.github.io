@@ -20,6 +20,7 @@ Then visit [http://localhost:8000](http://localhost:8000).
 ├── index.html             Home page (about, projects, main publications, contact)
 ├── publications.html      Full publication list
 ├── projects/              One page per project
+│   └── rohm-lts/explorer/ ROHM explorer module, copied from rohm-model/web by sync.sh (do not edit here)
 ├── data/publications.yaml Publication data (source for both publication views)
 ├── publications.js        Loads and renders data/publications.yaml
 ├── script.js              Home page scripts (nav, scroll highlight)
