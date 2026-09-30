@@ -24,14 +24,6 @@
   // Highlight active nav link on scroll
   const sections = document.querySelectorAll("section[id], #about");
   const navLinks = document.querySelectorAll(".nav-menu a");
-  const projectIds = [
-    "project-life-hts",
-    "project-fiqus",
-    "project-getdp-gmsh",
-    "project-rutherford-cables",
-    "project-hts-homogenization",
-    "project-quench-simulation",
-  ];
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -39,16 +31,7 @@
         if (entry.isIntersecting) {
           const id = entry.target.getAttribute("id");
           navLinks.forEach((link) => {
-            const href = link.getAttribute("href");
-            const isProjectsParent =
-              id === "projects" && href === "#projects";
-            const isProjectChild =
-              projectIds.includes(id) && href === `#${id}`;
-            const isSectionMatch = href === `#${id}`;
-            link.classList.toggle(
-              "active",
-              isProjectsParent || isProjectChild || isSectionMatch
-            );
+            link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
           });
         }
       });
@@ -57,7 +40,6 @@
   );
 
   sections.forEach((section) => observer.observe(section));
-  document.querySelectorAll(".project-card[id]").forEach((card) => observer.observe(card));
 
   const publicationsContainer = document.getElementById("publications-container");
   if (publicationsContainer) {

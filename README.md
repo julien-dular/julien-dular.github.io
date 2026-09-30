@@ -1,72 +1,41 @@
-# Academic Portfolio
+# julien-dular.github.io
 
-A clean, responsive personal portfolio for researchers and students. No build step required — just HTML, CSS, and JavaScript.
+Personal website of Julien Dular, served with GitHub Pages at [www.juliendular.be](https://www.juliendular.be).
+
+Plain HTML, CSS and JavaScript — no build step.
 
 ## Preview locally
 
-Open `index.html` in your browser, or run a local server:
+The publication lists are loaded from a YAML file with `fetch`, so the site must be served over HTTP (opening `index.html` directly won't load them):
 
 ```bash
-# Python
 python3 -m http.server 8000
-
-# Node (if you have npx)
-npx serve .
 ```
 
 Then visit [http://localhost:8000](http://localhost:8000).
 
-## Customize
-
-### 1. Personal info
-Edit `index.html` and replace all placeholder text:
-- Your name, title, department, and university
-- About section bio
-- Research interests, publications, projects, education
-- Email and social profile links
-
-### 2. Profile photo
-Replace the placeholder in the hero section:
-
-```html
-<div class="hero-photo">
-  <img src="assets/photo.jpg" alt="Your Name">
-</div>
-```
-
-Add your image to the `assets/` folder.
-
-### 3. CV download
-Place your CV PDF at `assets/cv.pdf`, or update the link in the hero section.
-
-### 4. Contact form
-The form is a placeholder. To make it work, connect to one of:
-- [Formspree](https://formspree.io) — add `action="https://formspree.io/f/YOUR_ID"` to the form
-- [Netlify Forms](https://docs.netlify.com/forms/setup/) — add `netlify` attribute when deploying to Netlify
-
-### 5. Colors & fonts
-Edit the CSS variables at the top of `styles.css`:
-
-```css
-:root {
-  --color-accent: #2d4a7c;
-  --color-highlight: #c4a35a;
-  /* ... */
-}
-```
-
-## Deploy for free
-
-- **GitHub Pages** — push to a repo, enable Pages in Settings
-- **Netlify** — drag and drop the folder at [netlify.com](https://netlify.com)
-- **Vercel** — import the repo at [vercel.com](https://vercel.com)
-
-## File structure
+## Structure
 
 ```
-├── index.html      Main page
-├── styles.css      All styles
-├── script.js       Navigation & interactivity
-├── assets/         Photos, CV, etc.
-└── README.md       This file
+├── index.html             Home page (about, projects, main publications, contact)
+├── publications.html      Full publication list
+├── projects/              One page per project
+├── data/publications.yaml Publication data (source for both publication views)
+├── publications.js        Loads and renders data/publications.yaml
+├── script.js              Home page scripts (nav, scroll highlight)
+├── publications-page.js   Publications page scripts
+├── project-page.js        Project page scripts
+├── styles.css             All styles
+├── assets/                Photo and icons
+└── CNAME                  Custom domain for GitHub Pages
 ```
+
+## Editing publications
+
+Edit `data/publications.yaml`. Entries are grouped by category (`first-author`, `second-author`, `oral-presentations`, `posters`). Set `main: true` on an entry to show it in the "Main Publications" section of the home page. Optional `links` (list of `label` / `url`) are rendered as buttons under the entry.
+
+## Adding a project
+
+1. Copy an existing page in `projects/` and edit its content.
+2. Add a card to the Projects section of `index.html`.
+3. Add the page to the Projects dropdown in the nav of `index.html` and of every page in `projects/`.
