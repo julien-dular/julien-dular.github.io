@@ -709,6 +709,15 @@ a.project-card:hover .project-link {
   font-size: 0.6rem;
 }
 
+/* Card of the nonlinear iterations explorer: power law and Newton-Raphson iterations in the background
+   (assets/iterations-newton.svg) */
+.project-card-iterations {
+  background:
+    linear-gradient(105deg, var(--color-surface) 35%, rgba(255, 255, 255, 0.6) 55%, rgba(255, 255, 255, 0) 80%),
+    url("assets/iterations-newton.svg") right 0.5rem center / auto 104% no-repeat,
+    var(--color-surface);
+}
+
 /* Project detail pages */
 .project-page .section-title {
   margin-bottom: 0.75rem;

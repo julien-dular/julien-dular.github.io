@@ -1,0 +1,694 @@
+/* Styles of <iteration-explorer> (adapted from the ROHM explorer). Loaded inside its shadow root only, so nothing here reaches the host page.
+   Colors and fonts follow the host page's tokens when they exist (custom properties inherit through the
+   shadow boundary), with fallbacks so the module also works on its own. */
+
+:host {
+  display: block;
+  container-type: inline-size;
+  --fx-text: var(--color-text, #1a1a2e);
+  --fx-muted: var(--color-text-muted, #5c5c6e);
+  --fx-border: var(--color-border, #ddd8d0);
+  --fx-surface: var(--color-surface, #ffffff);
+  --fx-bg-alt: var(--color-bg-alt, #f0ede8);
+  --fx-accent: var(--color-accent, #2d4a7c);
+  --fx-highlight: var(--color-highlight, #c4a35a);
+  --fx-radius: var(--radius, 6px);
+  --fx-font: var(--font-sans, system-ui, -apple-system, "Segoe UI", sans-serif);
+  --fx-font-serif: var(--font-serif, Georgia, serif);
+  /* Chart chrome and series (validated as a set on the white surface) */
+  --fx-grid: #eeebe6;
+  --fx-axis: #c9c4bb;
+  --fx-input: #898781;
+  --fx-law: var(--fx-accent);
+  --fx-iterate: #eb6834;
+  --fx-phi: #2a78d6;
+  --fx-phi2: #1baf7a;
+  --fx-aitken: #4a3aa7;
+  --fx-good: #0ca30c;
+  --fx-bad: #d03b3b;
+  font-family: var(--fx-font);
+  color: var(--fx-text);
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.fx {
+  background: var(--fx-surface);
+  border: 1px solid var(--fx-border);
+  border-radius: var(--fx-radius);
+  padding: 1.25rem;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.fx-head-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.fx-head h2 {
+  font-family: var(--fx-font-serif);
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Explore / Learn switch */
+.fx-seg {
+  display: inline-flex;
+  border: 1px solid var(--fx-border);
+  border-radius: var(--fx-radius);
+  overflow: hidden;
+}
+
+.fx-seg button {
+  font: inherit;
+  font-size: 0.875rem;
+  border: 0;
+  background: var(--fx-surface);
+  color: var(--fx-text);
+  padding: 0.35rem 0.85rem;
+  cursor: pointer;
+}
+
+.fx-seg button + button {
+  border-left: 1px solid var(--fx-border);
+}
+
+.fx-seg button[aria-pressed="true"] {
+  background: var(--fx-accent);
+  color: #fff;
+}
+
+/* Guided tour */
+.fx-tour {
+  margin: 0 0 1.25rem;
+  padding: 1rem 1.1rem;
+  background: var(--fx-bg-alt);
+  border-radius: var(--fx-radius);
+}
+
+.fx-step-count {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fx-muted);
+}
+
+.fx-tour h3 {
+  font-family: var(--fx-font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0.15rem 0 0.5rem;
+}
+
+.fx-tour-body p {
+  margin: 0 0 0.6rem;
+  max-width: 70ch;
+}
+
+.fx-details {
+  margin: 0.25rem 0 0;
+  font-size: 0.95rem;
+}
+
+.fx-details summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--fx-accent);
+}
+
+.fx-tour-details {
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.9rem 0.5rem;
+  background: var(--fx-surface);
+  border-radius: var(--fx-radius);
+  overflow-x: auto;
+}
+
+.fx-tour-details p {
+  margin: 0.6rem 0;
+  max-width: 70ch;
+}
+
+.fx-tour math[display="block"] {
+  margin: 0.6rem 0;
+  font-size: 1.05em;
+}
+
+.fx-ref {
+  font-size: 0.85rem;
+  color: var(--fx-muted);
+}
+
+.fx-ref a,
+.fx-tour a {
+  color: var(--fx-accent);
+}
+
+.fx-tour-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.9rem;
+}
+
+.fx-button {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--fx-radius);
+  border: 1px solid var(--fx-border);
+  background: var(--fx-surface);
+  color: var(--fx-text);
+  cursor: pointer;
+}
+
+.fx-button-primary {
+  background: var(--fx-accent);
+  border-color: var(--fx-accent);
+  color: #fff;
+}
+
+.fx-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.fx-head p {
+  margin: 0 0 1rem;
+  color: var(--fx-muted);
+}
+
+/* Controls: one row above the plots, wrapping on narrow screens */
+.fx-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  align-items: flex-end;
+}
+
+.fx-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  min-width: 0;
+}
+
+.fx-field > span:first-child {
+  color: var(--fx-muted);
+  font-weight: 500;
+}
+
+.fx-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding-bottom: 0.3rem;
+  cursor: pointer;
+}
+
+.fx-check input {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin: 0;
+  accent-color: var(--fx-accent);
+  cursor: pointer;
+}
+
+.fx-check-small {
+  font-size: 0.875rem;
+  padding-bottom: 0;
+}
+
+.fx-inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.9rem;
+}
+
+.fx-link-button {
+  font: inherit;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--fx-accent);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+select {
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--fx-text);
+  background: var(--fx-surface);
+  border: 1px solid var(--fx-border);
+  border-radius: var(--fx-radius);
+  padding: 0.3rem 0.5rem;
+  max-width: 100%;
+}
+
+.fx-slider {
+  flex: 1 1 11rem;
+  max-width: 16rem;
+}
+
+.fx-slider .fx-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fx-slider output {
+  min-width: 4.5rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+input[type="range"] {
+  flex: 1;
+  min-width: 0;
+  accent-color: var(--fx-accent);
+}
+
+input[type="range"]:disabled + output,
+.fx-field.is-disabled > span:first-child {
+  opacity: 0.5;
+}
+
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+summary:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--fx-accent);
+  outline-offset: 2px;
+}
+
+.fx-desc {
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+  color: var(--fx-muted);
+}
+
+/* Sliders and play bar: stick below the host page's sticky header (--header-height) while the plots
+   scroll, within the explorer only */
+.fx-sticky {
+  position: sticky;
+  top: var(--header-height, 0px);
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: flex-end;
+  margin: 1rem -1.25rem 1.25rem;
+  padding: 0.6rem 1.25rem 0.7rem;
+  background: var(--fx-surface);
+  border-top: 1px solid var(--fx-border);
+  border-bottom: 1px solid var(--fx-border);
+}
+
+.fx-sticky .fx-slider {
+  flex: 1 1 12rem;
+  max-width: none;
+}
+
+/* Note below the plots */
+.fx-note {
+  margin: 1.5rem 0 0;
+  padding: 0.6rem 0.9rem;
+  border-left: 3px solid var(--fx-highlight);
+  background: var(--fx-bg-alt);
+  border-radius: 0 var(--fx-radius) var(--fx-radius) 0;
+  font-size: 0.9rem;
+}
+
+.fx-note summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.fx-note p {
+  margin: 0.4rem 0 0;
+}
+
+.fx-note a {
+  color: var(--fx-accent);
+}
+
+/* Play bar */
+.fx-play {
+  flex: 2 1 18rem;
+}
+
+.fx-play .fx-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fx-play button {
+  font: inherit;
+  font-size: 0.8rem;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  border: 1px solid var(--fx-border);
+  background: var(--fx-surface);
+  color: var(--fx-accent);
+  cursor: pointer;
+  flex: none;
+}
+
+.fx-play output {
+  min-width: 7rem;
+  color: var(--fx-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Plots: one column, two from 720 px of available width */
+.fx-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem 1.5rem;
+}
+
+@container (min-width: 720px) {
+  .fx-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.fx-plot {
+  margin: 0;
+  min-width: 0;
+}
+
+.fx-plot h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.fx-plot .fx-sub {
+  margin: 0.1rem 0 0.4rem;
+  font-size: 0.85rem;
+  color: var(--fx-muted);
+}
+
+.fx-canvas {
+  width: 100%;
+  touch-action: pan-y;
+}
+
+.fx-canvas canvas {
+  display: block;
+}
+
+/* Legend with values at the current moment; the line key carries the series color, text stays ink */
+.fx-readout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 1rem;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.85rem;
+  color: var(--fx-muted);
+}
+
+.fx-readout li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Legend keys mirror the marks; their color comes from --c */
+.fx-readout .key {
+  display: inline-block;
+  flex: none;
+}
+
+.fx-readout .key-line {
+  width: 14px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--c);
+}
+
+.fx-readout .key-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--c);
+}
+
+.fx-readout .key-box {
+  width: 16px;
+  height: 10px;
+  border: 1.5px solid var(--c);
+  background: color-mix(in srgb, var(--c) 18%, transparent);
+}
+
+.fx-plot.is-wide {
+  grid-column: 1 / -1;
+}
+
+.fx-readout strong {
+  color: var(--fx-text);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.fx-foot {
+  margin: 1rem 0 0;
+  font-size: 0.8rem;
+  color: var(--fx-muted);
+}
+
+.fx-foot a {
+  color: var(--fx-accent);
+}
+
+/* AI assistance notice: gentle, separated from the references by a hairline */
+.fx-ai {
+  margin: 0.75rem 0 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--fx-border);
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--fx-muted);
+}
+
+.fx-error {
+  color: var(--fx-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-play button {
+    transition: none;
+  }
+}
+
+/* Problem statement: equation and iteration, in MathML */
+.fx-equation {
+  margin: 1rem 0 0;
+  padding: 0.6rem 0.9rem;
+  background: var(--fx-bg-alt);
+  border-radius: var(--fx-radius);
+  font-size: 0.95rem;
+  overflow-x: auto;
+}
+
+.fx-equation p {
+  margin: 0.2rem 0;
+}
+
+.fx-equation .fx-eq-label {
+  display: inline-block;
+  min-width: 9rem;
+  color: var(--fx-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.fx-equation math {
+  font-size: 1.05em;
+}
+
+/* Sticky bar: parameters of the law, right-hand side and initial guess */
+.fx-bar-row {
+  flex: 1 1 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: flex-end;
+}
+
+.fx-reset {
+  font-size: 0.85rem;
+  padding-bottom: 0.35rem;
+}
+
+.fx-point {
+  flex: none;
+}
+
+.fx-point .fx-num-small {
+  width: 5.5rem;
+}
+
+.fx-num-small {
+  font: inherit;
+  font-size: 0.875rem;
+  width: 4rem;
+  padding: 0.25rem 0.4rem;
+  border: 1px solid var(--fx-border);
+  border-radius: var(--fx-radius);
+  background: var(--fx-surface);
+  color: var(--fx-text);
+}
+
+/* Iteration controls in the sticky bar */
+.fx-steps {
+  flex: 2 1 20rem;
+}
+
+.fx-steps .fx-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.fx-steps button {
+  font: inherit;
+  font-size: 0.8rem;
+  min-width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--fx-border);
+  background: var(--fx-surface);
+  color: var(--fx-accent);
+  cursor: pointer;
+  flex: none;
+}
+
+.fx-steps button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.fx-steps output {
+  min-width: 7.5rem;
+  color: var(--fx-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.fx-status {
+  flex: 1 1 100%;
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.fx-status .fx-badge {
+  display: inline-block;
+  margin-right: 0.4rem;
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--fx-good);
+}
+
+.fx-status .fx-badge.is-bad {
+  background: var(--fx-bad);
+}
+
+/* Small options above a plot */
+.fx-figtools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin: 0 0 0.3rem;
+}
+
+.fx-figtools .fx-check {
+  font-size: 0.85rem;
+  padding-bottom: 0;
+}
+
+/* Color scale of the convergence map */
+.fx-scale {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 1.25rem;
+  margin: 0.4rem 0 0 52px;
+  font-size: 0.8rem;
+  color: var(--fx-muted);
+}
+
+.fx-scale-bar {
+  position: relative;
+  width: min(18rem, 100%);
+  height: 10px;
+  border-radius: 2px;
+  margin-bottom: 1.1rem;
+}
+
+.fx-scale-bar span {
+  position: absolute;
+  top: 12px;
+  transform: translateX(-50%);
+  font-variant-numeric: tabular-nums;
+}
+
+.fx-scale-fail {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 1.1rem;
+}
+
+.fx-scale-fail i {
+  display: inline-block;
+  width: 16px;
+  height: 10px;
+  border: 1px solid var(--fx-axis);
+  background: repeating-linear-gradient(135deg, var(--fx-surface) 0 3px, var(--fx-axis) 3px 4px);
+}
+
+/* Narrow screens: the iteration counter goes below its slider, and the bar scrolls with the page (pinned,
+   its three rows would hide most of the plots) */
+@container (max-width: 560px) {
+  .fx-steps .fx-slider-row {
+    flex-wrap: wrap;
+  }
+
+  .fx-steps output {
+    flex: 1 0 100%;
+  }
+
+  .fx-sticky {
+    position: static;
+  }
+}
