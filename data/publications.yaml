@@ -1,0 +1,185 @@
+categories:
+  - id: first-author
+    title: Publications as First Author
+    items:
+      - year: 2026
+        main: true
+        title: "Distributed inter-strand coupling current model for finite element simulations of Rutherford cables"
+        authors: "<strong>J. Dular</strong>, A. Glock, A. Verweij, M. Wozniak"
+        venue: "<em>Superconductor Science and Technology</em>, vol. 39, no. 3, pp. 1–31, Art. no. 035006."
+      - year: 2025
+        main: true
+        title: Reduced order hysteretic magnetization model for composite superconductors
+        authors: "<strong>J. Dular</strong>, A. Verweij, M. Wozniak"
+        venue: "<em>Superconductor Science and Technology</em>, vol. 38, no. 3, pp. 1–21, Art. no. 035017."
+      - year: 2025
+        title: "A finite element a-h-formulation for the reduced order hysteretic magnetization model for composite superconductors"
+        authors: "<strong>J. Dular</strong>, A. Verweij, M. Wozniak"
+        venue: "<em>IEEE Transactions on Applied Superconductivity</em>, vol. 35, no. 5, pp. 1–5, Art. no. 8200205."
+      - year: 2024
+        title: Simulation of Rutherford cable AC loss and magnetization with the coupled axial and transverse currents method
+        authors: "<strong>J. Dular</strong>, F. Magnus, E. Schnaubelt, A. Verweij, M. Wozniak"
+        venue: "<em>IEEE Transactions on Applied Superconductivity</em>, vol. 35, no. 5, pp. 1–5, Art. no. 4700605."
+      - year: 2024
+        main: true
+        title: Coupled axial and transverse currents method for finite element modelling of periodic superconductors
+        authors: "<strong>J. Dular</strong>, F. Magnus, E. Schnaubelt, A. Verweij, M. Wozniak"
+        venue: "<em>Superconductor Science and Technology</em>, vol. 37, no. 9, pp. 1–17, Art. no. 095002."
+      - year: 2024
+        title: Helicoidal Transformation Method for Finite Element Models of Twisted Superconductors
+        authors: "<strong>J. Dular</strong>, F. Henrotte, A. Nicolet, M. Wozniak, B. Vanderheyden, C. Geuzaine"
+        venue: "<em>IEEE Transactions on Applied Superconductivity</em>, vol. 34, no. 7, pp. 1–15, Art. no. 8200615."
+      - year: 2024
+        title: Finite Element Models for Magnetic Shields Made of Stacked Superconducting Tape Annuli
+        authors: "<strong>J. Dular</strong>, S. Brialmont, P. Vanderbemden, C. Geuzaine, B. Vanderheyden"
+        venue: "<em>IEEE Transactions on Applied Superconductivity</em>, vol. 34, no. 3, pp. 1–7, Art. no. 4903507."
+      - year: 2023
+        title: "Standard and mixed finite element formulations for systems with type-II superconductors"
+        authors: "<strong>J. Dular</strong>"
+        venue: PhD dissertation, University of Liège, Belgium.
+      - year: 2022
+        main: true
+        title: "What Formulation Should One Choose for Modeling a 3D HTS Motor Pole with Ferromagnetic Materials?"
+        authors: "<strong>J. Dular</strong>, K. Berger, C. Geuzaine, B. Vanderheyden"
+        venue: "<em>IEEE Transactions on Magnetics</em>, vol. 58, no. 9, pp. 1–4, Art. no. 8205204."
+      - year: 2021
+        title: "On the Stability of Mixed Finite-Element Formulations for High-Temperature Superconductors"
+        authors: "<strong>J. Dular</strong>, M. Harutyunyan, L. Bortot, S. Schöps, B. Vanderheyden, C. Geuzaine"
+        venue: "<em>IEEE Transactions on Applied Superconductivity</em>, vol. 31, no. 6, pp. 1–12, Art. no. 8200412."
+      - year: 2019
+        title: "Finite Element Formulations for Systems with High-Temperature Superconductors"
+        authors: "<strong>J. Dular</strong>, C. Geuzaine, B. Vanderheyden"
+        venue: "<em>IEEE Transactions on Applied Superconductivity</em>, vol. 30, no. 3, pp. 1–13, Art. no. 8200113."
+  - id: second-author
+    title: Publications as Second Author
+    items:
+      - year: 2026
+        title: "Critical Current and Magnetization Scaling of Nb3Sn Wires: Measurements and Simulations from Exact Wire Geometries"
+        authors: "J. Baumann, S. C. Hopkins, <strong>J. Dular</strong>, F. Magnus, M. Wozniak, J. D. Bijlsma, B. Medina-Clavijo, T. Boutboul"
+        venue: "<em>IEEE Transactions on Applied Superconductivity</em>, vol. 36, no. 5, Art. no. 6001509."
+      - year: 2026
+        title: "Acceleration of Multi-Scale LTS Magnet Simulations With Neural Network Surrogate Models"
+        authors: "L. Denis, <strong>J. Dular</strong>, V. Nuttens, M. Wozniak, B. Vanderheyden, C. Geuzaine"
+        venue: "<em>IEEE Transactions on Applied Superconductivity</em>, vol. 36, no. 5, Art. no. 5900806."
+      - year: 2025
+        title: Reduced order hysteretic flux model for transport current homogenization in composite superconductors
+        authors: "A. Glock, <strong>J. Dular</strong>, A. Verweij, M. Wozniak"
+        venue: "<em>IEEE Transactions on Magnetics</em>, 10.1109/TMAG.2025.3613877."
+      - year: 2025
+        title: Efficient Finite Element Models for Milliken Conductors Using Homogenization Techniques Based on Helicoidal Symmetry
+        authors: "A. Piwonski, <strong>J. Dular</strong>, R. V. Sabariego, R. S. Rezende, R. Schuhmann"
+        venue: "<em>IEEE Transactions on Magnetics</em>, 10.1109/TMAG.2025.3612306."
+      - year: 2025
+        title: Numerical and Experimental Investigation of AC Losses in MgB2 Wires
+        authors: "L. Soldati, <strong>J. Dular</strong>, J. Kovac, P. Kovac, M. Cialone, T. Spina, C.-E. Bruzek, M. Wozniak, M. Putty, M. Breschi"
+        venue: "<em>Superconductor Science and Technology</em>, vol. 38, no. 6, pp. 1–19, Art. no. 065019."
+      - year: 2025
+        title: "Influence of Critical Current Defect on Operation, Quench Detection and Protection of Conduction-Cooled Pancake REBCO Coil"
+        authors: "M. Wozniak, E. Schnaubelt, S. Atalay, B. Bordini, <strong>J. Dular</strong>, T. Mulder, E. Ravaioli, A. Verweij"
+        venue: "<em>IEEE Transactions on Applied Superconductivity</em>, vol. 35, no. 5, pp. 1–6, Art. no. 4604006."
+      - year: 2024
+        title: Analysis of AC Losses Due to Current Ripple in MgB2 Wires With Helicoidal Transformation Method
+        authors: "L. Soldati, <strong>J. Dular</strong>, M. Breschi, T. Spina, C.-E. Bruzek"
+        venue: "<em>IEEE Transactions on Applied Superconductivity</em>, vol. 35, no. 5, Art. no. 5901105."
+      - year: 2024
+        title: Enhancing the magnetic field gradient between two superconductors with rotational motion under a background DC field
+        authors: "M. Houbart, J.-F. Fagnard, P. Harmeling, <strong>J. Dular</strong>, A.R. Dennis, D.K. Namburi, J.H. Durrell, C. Geuzaine, B. Vanderheyden, P. Vanderbemden"
+        venue: "<em>Superconductor Science and Technology</em>, vol. 37, no. 9, Art. no. 095009."
+      - year: 2024
+        title: "An open-source 3D FE quench simulation tool for no-insulation HTS pancake coils"
+        authors: "S. Atalay, E. Schnaubelt, M. Wozniak, <strong>J. Dular</strong>, G. Zachou, S. Schöps, A. Verweij"
+        venue: "<em>Superconductor Science and Technology</em>, vol. 37, no. 6, Art. no. 065005."
+      - year: 2023
+        title: "Magneto-thermal thin shell approximation for 3D finite element analysis of no-insulation coils"
+        authors: "E. Schnaubelt, S. Atalay, M. Wozniak, <strong>J. Dular</strong>, C. Geuzaine, B. Vanderheyden, N. Marsic, A. Verweij, S. Schöps"
+        venue: "<em>IEEE Transactions on Applied Superconductivity</em>, vol. 34, no. 3, pp. 1–6, Art. no. 4700406."
+      - year: 2023
+        title: "Quench co-simulation of canted cos-theta magnets"
+        authors: "M. Wozniak, E. Schnaubelt, <strong>J. Dular</strong>, E. Ravaioli, A. Verweij"
+        venue: "<em>IEEE Transactions on Applied Superconductivity</em>, vol. 34, no. 3, pp. 1–5, Art. no. 4900105."
+      - year: 2023
+        title: "How to overcome the demagnetization of superconducting Halbach arrays?"
+        authors: "M. Houbart, J.-F. Fagnard, <strong>J. Dular</strong>, A.R. Dennis, D.K. Namburi, J.H. Durrell, C. Geuzaine, B. Vanderheyden, P. Vanderbemden"
+        venue: "<em>Superconductor Science and Technology</em>, vol. 36, no. 11, Art. no. 115012."
+      - year: 2023
+        title: "Finite-element modeling of power cables using coordinate transformations"
+        authors: "A. Piwonski, <strong>J. Dular</strong>, R. S. Rezende, R. Schuhmann"
+        venue: "<em>IEEE Transactions on Magnetics</em>, vol. 60, no. 3, pp. 1–4, Art. no. 7401104."
+      - year: 2023
+        title: Magnetic shielding up to 0.67 T at 77 K using a stack of high temperature superconducting tape annuli of 26 mm bore
+        authors: "S. Brialmont, <strong>J. Dular</strong>, L. Wéra, J.-F. Fagnard, B. Vanderheyden, C. Geuzaine, S. Hahn, A. Patel, P. Vanderbemden"
+        venue: "<em>Superconductor Science and Technology</em>, vol. 36, no. 5, Art. no. 054004."
+      - year: 2023
+        title: 2D eddy current boundary value problems for power cables with helicoidal symmetry
+        authors: "A. Piwonski, <strong>J. Dular</strong>, R. Silva Rezende, R. Schuhmann"
+        venue: "<em>IEEE Transactions on Magnetics</em>, vol. 59, no. 5, pp. 1–4, Art. no. 6300204."
+      - year: 2022
+        title: Trapped magnetic field distribution above a superconducting linear Halbach array
+        authors: "M. Houbart, J.-F. Fagnard, <strong>J. Dular</strong>, A.R. Dennis, D.K. Namburi, J.H. Durrell, C. Geuzaine, B. Vanderheyden, P. Vanderbemden"
+        venue: "<em>Superconductor Science and Technology</em>, vol. 35, no. 6, Art. no. 064005."
+  - id: oral-presentations
+    title: Conference Oral Presentations
+    items:
+      - year: 2025
+        title: Strand and Cable Homogenization for FE Simulations of Superconducting Magnets
+        authors: "<strong>J. Dular</strong> et al."
+        venue: Oral presentation at the 25th International Conference on the Computation of Electromagnetic Fields (COMPUMAG), Naples, Italy.
+      - year: 2024
+        title: "Coupled axial and transverse currents method for periodic superconductors: strands and cables"
+        authors: "<strong>J. Dular</strong> et al."
+        venue: Oral presentation at the Applied Superconductivity Conference (ASC), Salt Lake City, USA.
+      - year: 2024
+        title: Coupled axial and transverse currents method for finite element modelling of periodic superconductors
+        authors: "<strong>J. Dular</strong> et al."
+        venue: Oral presentation at the 9th International Workshop on Numerical Modelling of High Temperature Superconductors, Bad Zurzach, Switzerland.
+      - year: 2022
+        title: Mixed Finite Element Formulations for Systems with Superconductors and Ferromagnetic Materials
+        authors: "<strong>J. Dular</strong> et al."
+        venue: "Oral presentation at the 8th International Conference on \"Advanced Computational Methods in Engineering\" (ACOMEN), Liège, Belgium."
+      - year: 2022
+        title: 3D Finite Element Models of Stacked Tapes Magnetic Shields
+        authors: "<strong>J. Dular</strong> et al."
+        venue: Oral presentation at the 8th International Workshop on Numerical Modelling of High Temperature Superconductors, Nancy, France.
+      - year: 2021
+        title: Stability of HA and TA Coupled Formulations for HTS Modelling
+        authors: "<strong>J. Dular</strong> et al."
+        venue: Oral presentation at the 12th Symposium on Electric and Magnetic Fields (EMF), Liège, Belgium.
+      - year: 2021
+        title: Stability of HA and TA Coupled Formulations
+        authors: "<strong>J. Dular</strong> et al."
+        venue: Invited oral presentation at the 7th International Workshop on Numerical Modelling of High Temperature Superconductors, Nancy, France.
+      - year: 2021
+        title: Superconductors in GetDP
+        authors: "<strong>J. Dular</strong> et al."
+        venue: "Two-hour lecture at the GetDP workshop, CERN, Switzerland."
+      - year: 2020
+        title: "Life-HTS — Finite Element Formulations for HTS, Practice Session"
+        authors: "<strong>J. Dular</strong> et al."
+        venue: Lecture at the 3rd International School on Numerical Modelling for Applied Superconductivity, Nancy, France.
+      - year: 2019
+        title: "Finite Element Models for Systems with High-Temperature Superconductors and Ferromagnetic Materials"
+        authors: "<strong>J. Dular</strong> et al."
+        venue: Oral presentation at the 22nd International Conference on the Computation of Electromagnetic Fields (COMPUMAG), Paris, France. (Rita Trowbridge Prize 2019.)
+  - id: posters
+    title: Conference Posters
+    items:
+      - year: 2025
+        title: Reduced Order Hysteretic Magnetization and Flux Models for Composite Superconductors
+        authors: "<strong>J. Dular</strong> et al."
+        venue: Poster presentation at the 25th International Conference on the Computation of Electromagnetic Fields (COMPUMAG), Naples, Italy.
+      - year: 2024
+        title: "An a-h-formulation of vector hysteresis model for composite superconductors"
+        authors: "<strong>J. Dular</strong> et al."
+        venue: Poster presentation at the Applied Superconductivity Conference (ASC), Salt Lake City, USA.
+      - year: 2022
+        title: "What Formulation Should One Choose for Modeling a 3D HTS Motor Pole with Ferromagnetic Materials?"
+        authors: "<strong>J. Dular</strong> et al."
+        venue: Poster presentation at the 23rd International Conference on the Computation of Electromagnetic Fields (COMPUMAG), Cancun, Mexico.
+      - year: 2022
+        title: 2D FEM Calculation of AC Losses in Twisted Superconductors with a Helicoidal Transformation
+        authors: "<strong>J. Dular</strong> et al."
+        venue: Poster presentation at the 23rd International Conference on the Computation of Electromagnetic Fields (COMPUMAG), Cancun, Mexico.
+      - year: 2019
+        title: Comparison of Finite Element Formulations for HTS and Ferromagnetic Materials
+        authors: "<strong>J. Dular</strong> et al."
+        venue: Invited poster presentation at the 14th European Conference on Applied Superconductivity (EUCAS), Glasgow, United Kingdom.

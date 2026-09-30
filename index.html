@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Academic portfolio — research, publications, and projects">
+  <title>Julien Dular — Research Portfolio</title>
+  <link rel="icon" href="assets/favicon.ico" sizes="32x32">
+  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="nav-logo" href="#">
+        <img class="nav-logo-photo" src="assets/favicon.png" alt="">
+        Julien Dular
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#about">About</a></li>
+        <li class="nav-item-dropdown">
+          <a href="#projects" class="nav-dropdown-trigger">Projects</a>
+          <ul class="nav-submenu" aria-label="Project links">
+            <li><a href="projects/life-hts.html">Life-HTS</a></li>
+            <li><a href="projects/fiqus.html">FiQuS</a></li>
+            <li><a href="projects/getdp-gmsh.html">GetDP & Gmsh</a></li>
+            <li><a href="projects/rutherford-cables.html">Rutherford Cables</a></li>
+            <li><a href="projects/hts-homogenization.html">HTS Homogenization</a></li>
+            <li><a href="projects/quench-simulation.html">Quench Simulation</a></li>
+          </ul>
+        </li>
+        <li class="nav-item-dropdown">
+          <a href="#publications" class="nav-dropdown-trigger">Publications</a>
+          <ul class="nav-submenu" aria-label="Publication categories">
+            <li><a href="#publications">Main Publications</a></li>
+            <li><a href="publications.html#first-author">All Publications </a></li>
+          </ul>
+        </li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="hero-inner">
+      <div class="hero-content">
+        <h1>Julien Dular</h1>
+        <p class="hero-label"> FNRS - Post-Doctoral Researcher - Chargé de recherches </p>
+        <ul class="social-links" aria-label="Academic profiles">
+          <li><a href="mailto:julien.dular@uliege.be" aria-label="Email">Email</a></li>
+          <li><a href="https://scholar.google.com/citations?user=bdQ_PpEAAAAJ&hl=fr" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0000-0003-0503-7526" target="_blank" rel="noopener noreferrer">ORCID</a></li>
+          <li><a href="https://www.linkedin.com/in/julien-dular/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+        <div class="about-grid" id="about">
+          <h2 class="hero-about-title">About</h2>
+          <div class="about-text">
+            <p>
+              I am a physicist-engineer with a PhD in computational physics. My research
+              focuses on numerical modelling of electromagnetic fields in the context of
+              applied superconductivity.
+            </p>
+            <p>
+              I develop these models in open-source software, including
+              <a href="http://www.life-hts.uliege.be/" target="_blank" rel="noopener noreferrer">Life-HTS</a>,
+              <a href="https://steam.docs.cern.ch/tools/fiqus/" target="_blank" rel="noopener noreferrer">FiQuS</a>,
+              <a href="https://getdp.info" target="_blank" rel="noopener noreferrer">GetDP</a>, and
+              <a href="https://gmsh.info/" target="_blank" rel="noopener noreferrer">Gmsh</a>.
+            </p>
+          </div>
+          <aside class="about-highlights">
+            <h3>Current Focus</h3>
+            <ul>
+              <li>Electromagnetic field computation</li>
+              <li>Applied superconductivity</li>
+              <li>Open-source numerical modelling</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="assets/photo.jpg" alt="Julien Dular">
+      </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="projects">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="project-carousel">
+          <div class="project-track" role="region" aria-label="Projects">
+            <a class="project-card" id="project-life-hts" href="projects/life-hts.html">
+              <div class="project-meta">Open Source · GetDP</div>
+              <h3>Life-HTS</h3>
+              <p>Finite element models and workflows for high-temperature superconductors and electromagnetic devices.</p>
+              <span class="project-link">View project →</span>
+            </a>
+
+
+            <a class="project-card" id="project-fiqus" href="projects/fiqus.html">
+              <div class="project-meta">CERN · Simulation</div>
+              <h3>FiQuS</h3>
+              <p>Electro-thermal simulation framework for modelling transients in superconducting accelerator magnets.</p>
+              <span class="project-link">View project →</span>
+            </a>
+            <a class="project-card" id="project-getdp-gmsh" href="projects/getdp-gmsh.html">
+              <div class="project-meta">Open Source · Meshing & FEM</div>
+              <h3>GetDP & Gmsh</h3>
+              <p>Contributions to open-source meshing and variational finite element solvers for superconductivity.</p>
+              <span class="project-link">View project →</span>
+            </a>
+            <a class="project-card" id="project-rutherford-cables" href="projects/rutherford-cables.html">
+              <div class="project-meta">Research · Rutherford cables</div>
+              <h3>Rutherford Cable Modelling</h3>
+              <p>Distributed inter-strand coupling current models and AC loss simulation for accelerator magnet cables.</p>
+              <span class="project-link">View project →</span>
+            </a>
+            <a class="project-card" id="project-hts-homogenization" href="projects/hts-homogenization.html">
+              <div class="project-meta">F.R.S.-FNRS · Homogenization</div>
+              <h3>HTS Homogenization & ROM</h3>
+              <p>Reduced-order hysteretic models and homogenization methods for HTS windings and composite conductors.</p>
+              <span class="project-link">View project →</span>
+            </a>
+            <a class="project-card" id="project-quench-simulation" href="projects/quench-simulation.html">
+              <div class="project-meta">Open Source · Quench</div>
+              <h3>Quench Simulation</h3>
+              <p>3D finite-element electro-thermal tools for quench analysis in no-insulation HTS pancake coils.</p>
+              <span class="project-link">View project →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="publications">
+      <div class="container" >
+        <h2 class="section-title">Main Publications</h2>
+        <p class="section-intro">Highlighted peer-reviewed work. Full list on <a href="https://scholar.google.com/citations?user=bdQ_PpEAAAAJ&hl=fr" target="_blank" rel="noopener noreferrer">Google Scholar</a>.</p>
+
+        <div id="publications-container" data-main="true" data-show-all="true" aria-live="polite">
+          <p class="section-intro">Loading publications…</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-info">
+          <p>
+            I am open to collaborations, speaking invitations, and questions from prospective
+            students and researchers. Feel free to reach out.
+          </p>
+          <div class="contact-body">
+            <ul class="contact-details">
+              <li>
+                <span class="contact-label">Email</span>
+                <a href="mailto:julien.dular@uliege.be">julien.dular@uliege.be</a>
+              </li>
+              <li>
+                <span class="contact-label">Office</span>
+                <a class="contact-office-address" href="https://www.google.com/maps/search/?api=1&amp;query=B28+Institut+Montefiore,+All%C3%A9e+de+la+D%C3%A9couverte+10,+4000+Li%C3%A8ge,+Belgium" target="_blank" rel="noopener noreferrer">
+                  B28 - Institut Montefiore
+                  <br> Campus du Sart Tilman - Quartier POLYTECH 1
+                  <br> Allée de la Découverte 10
+                  <br> 4000 Liège - Belgium
+                </a>
+              </li>
+            </ul>
+            <div class="contact-map">
+              <iframe
+                src="https://maps.google.com/maps?q=50.586096,5.561229&amp;hl=en&amp;z=16&amp;output=embed"
+                title="B28 - Institut Montefiore on Google Maps"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Julien Dular. Built with care for academic portfolios.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+  <script src="publications.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
