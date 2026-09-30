@@ -27,7 +27,11 @@ Then visit [http://localhost:8000](http://localhost:8000).
 ├── project-page.js        Project page scripts
 ├── styles.css             All styles
 └── assets/                Photo and icons
+    ├── fonts/             Self-hosted web fonts (Crimson Pro, Source Sans 3) and their licenses
+    └── vendor/            Third-party scripts (js-yaml, MIT)
 ```
+
+The site loads no resources from third-party servers (fonts and scripts are served from this repository), so visitors' IP addresses are not shared with Google or CDNs.
 
 ## Editing publications
 
