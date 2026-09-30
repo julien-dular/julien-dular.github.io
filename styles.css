@@ -251,6 +251,28 @@ a:hover {
   white-space: nowrap;
 }
 
+/* "Interactive" pill, on the ROHM project card and next to its menu link */
+.project-badge,
+.nav-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 10%, var(--color-surface));
+  border-radius: 999px;
+}
+
+.nav-badge {
+  margin-left: 0.4rem;
+  padding: 0.1rem 0.45rem;
+  font-size: 0.62rem;
+  vertical-align: 0.1em;
+}
+
 .nav-submenu a:hover,
 .nav-submenu a.active {
   background: var(--color-bg-alt);
@@ -664,6 +686,27 @@ a.project-card:hover {
 
 a.project-card:hover .project-link {
   color: var(--color-accent-light);
+}
+
+/* Card leading to an interactive application: magnetization loops computed with the model in the
+   background (assets/rohm-loops.svg), faded under the text */
+.project-card-interactive {
+  background:
+    linear-gradient(105deg, var(--color-surface) 30%, rgba(255, 255, 255, 0.7) 60%, rgba(255, 255, 255, 0.15) 100%),
+    url("assets/rohm-loops.svg") right -2rem center / auto 125% no-repeat,
+    var(--color-surface);
+  border-color: color-mix(in srgb, var(--color-accent) 25%, var(--color-border));
+}
+
+.project-badge {
+  align-self: flex-start;
+  margin-bottom: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.7rem;
+}
+
+.project-badge span {
+  font-size: 0.6rem;
 }
 
 /* Project detail pages */
