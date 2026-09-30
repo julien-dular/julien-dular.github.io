@@ -1,6 +1,6 @@
 # julien-dular.github.io
 
-Personal website of Julien Dular, served with GitHub Pages at [www.juliendular.be](https://www.juliendular.be).
+Personal website of Julien Dular, served with GitHub Pages at [julien-dular.github.io](https://julien-dular.github.io).
 
 Plain HTML, CSS and JavaScript — no build step.
 
@@ -26,8 +26,7 @@ Then visit [http://localhost:8000](http://localhost:8000).
 ├── publications-page.js   Publications page scripts
 ├── project-page.js        Project page scripts
 ├── styles.css             All styles
-├── assets/                Photo and icons
-└── CNAME                  Custom domain for GitHub Pages
+└── assets/                Photo and icons
 ```
 
 ## Editing publications
