@@ -187,7 +187,7 @@ export function computeCS(chain, time, h) {
         let gi;
         if (Math.abs(h[i] - g[k][i - 1]) >= kappa) gi = h[i] - kappa * dirUnit;
         else if (dir * (dir - kappa * dirUnit) > 0) gi = h[i] - kappa * dirUnit;
-        else gi = hrevPrev;
+        else gi = g[k][i - 1]; // inside the band g keeps g(p), Eq. (28): a lagging cell keeps relaxing
         g[k][i] = gi;
         // Deduce hirr from g and h
         hirr[k][i] = h[i] - gi;
