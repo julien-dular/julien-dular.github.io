@@ -3,8 +3,12 @@
 
   const YAML_PATH = "data/publications.yaml";
 
-  function countPublications(categories) {
-    return categories.reduce((sum, cat) => sum + (cat.items || []).length, 0);
+  const PAPER_CATEGORY_IDS = ["first-author", "co-author"];
+
+  function countPapers(categories) {
+    return categories
+      .filter((cat) => PAPER_CATEGORY_IDS.includes(cat.id))
+      .reduce((sum, cat) => sum + (cat.items || []).length, 0);
   }
 
   function getMainPublications(categories) {
@@ -47,13 +51,12 @@
 
   function renderPublicationCategory(category, isFirst) {
     const divider = isFirst ? "" : '<hr class="publication-divider">';
-    const items = (category.items || [])
-      .map((pub) => renderPublication(pub))
-      .join("");
+    const publications = category.items || [];
+    const items = publications.map((pub) => renderPublication(pub)).join("");
 
     return `
       ${divider}
-      <h3 class="subsection-title" id="${category.id}">${category.title}</h3>
+      <h3 class="subsection-title" id="${category.id}">${category.title} (${publications.length})</h3>
       <ol class="publication-list">${items}</ol>`;
   }
 
@@ -78,7 +81,7 @@
 
       const data = jsyaml.load(await response.text());
       const categories = data.categories || [];
-      const total = countPublications(categories);
+      const total = countPapers(categories);
 
       if (grouped) {
         container.innerHTML = categories

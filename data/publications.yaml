@@ -55,6 +55,18 @@ categories:
     title: Publications as Co-Author
     items:
       - year: 2026
+        title: "Current patterns and loss contributions in single-layer CORT cables carrying AC current"
+        authors: "B. Vanderheyden, <strong>J. Dular</strong>, L. Denis, S. Elschner, C. Geuzaine, M. Wozniak, F. Grilli"
+        venue: "<em>Superconductor Science and Technology</em>, vol. 39, no. 11, Art. no. 115012."
+      - year: 2026
+        title: "Surface Contact Approximation for Magneto-Thermal Finite Element Analysis of No-Insulation HTS Coils"
+        authors: "E. Schnaubelt, L. Denis, M. Wozniak, <strong>J. Dular</strong>, A. Verweij"
+        venue: "<em>IEEE Transactions on Applied Superconductivity</em>, early access, 10.1109/TASC.2026.3749089."
+      - year: 2026
+        title: "Explicit turn resolution with anisotropic homogenisation for efficient 3D magneto-thermal finite-element simulation of large-scale no-insulation HTS magnets"
+        authors: "L. Denis, E. Schnaubelt, <strong>J. Dular</strong>, M. Wozniak, B. Vanderheyden, C. Geuzaine"
+        venue: "<em>Superconductor Science and Technology</em>, vol. 39, no. 8, Art. no. 085005."
+      - year: 2026
         title: "Critical Current and Magnetization Scaling of Nb3Sn Wires: Measurements and Simulations from Exact Wire Geometries"
         authors: "J. Baumann, S. C. Hopkins, <strong>J. Dular</strong>, F. Magnus, M. Wozniak, J. D. Bijlsma, B. Medina-Clavijo, T. Boutboul"
         venue: "<em>IEEE Transactions on Applied Superconductivity</em>, vol. 36, no. 5, Art. no. 6001509."
@@ -121,66 +133,74 @@ categories:
   - id: oral-presentations
     title: Conference Oral Presentations
     items:
+      - year: 2026
+        title: Reduced order modelling and homogenization of superconducting wires and cables
+        authors: "<strong>J. Dular</strong>, C. Halvarsson, L. Denis, E. Schnaubelt, M. Wozniak, B. Vanderheyden, C. Geuzaine"
+        venue: Oral presentation at the 11ème Conférence Européenne sur les Méthodes Numériques en Électromagnétisme, Grenoble, France.
+      - year: 2026
+        title: "AC Loss Modelling of HTS Stacked Tape Cables: Twisted or Non-Twisted"
+        authors: "<strong>J. Dular</strong>, C. Halvarsson, E. Schnaubelt, A. Verweij, M. Wozniak"
+        venue: Oral presentation at the 10th International Workshop on Numerical Modelling of High Temperature Superconductors, Edinburgh, United Kingdom.
       - year: 2025
         title: Strand and Cable Homogenization for FE Simulations of Superconducting Magnets
-        authors: "<strong>J. Dular</strong> et al."
+        authors: "<strong>J. Dular</strong>, A. Glock, E. Schnaubelt, A. Verweij, M. Wozniak"
         venue: Oral presentation at the 25th International Conference on the Computation of Electromagnetic Fields (COMPUMAG), Naples, Italy.
       - year: 2024
         title: "Coupled axial and transverse currents method for periodic superconductors: strands and cables"
-        authors: "<strong>J. Dular</strong> et al."
+        authors: "<strong>J. Dular</strong>, F. Magnus, E. Schnaubelt, A. Verweij, M. Wozniak"
         venue: Oral presentation at the Applied Superconductivity Conference (ASC), Salt Lake City, USA.
       - year: 2024
         title: Coupled axial and transverse currents method for finite element modelling of periodic superconductors
-        authors: "<strong>J. Dular</strong> et al."
+        authors: "<strong>J. Dular</strong>, F. Magnus, E. Schnaubelt, A. Verweij, M. Wozniak"
         venue: Oral presentation at the 9th International Workshop on Numerical Modelling of High Temperature Superconductors, Bad Zurzach, Switzerland.
       - year: 2022
         title: Mixed Finite Element Formulations for Systems with Superconductors and Ferromagnetic Materials
-        authors: "<strong>J. Dular</strong> et al."
+        authors: "<strong>J. Dular</strong>, C. Geuzaine, B. Vanderheyden"
         venue: "Oral presentation at the 8th International Conference on \"Advanced Computational Methods in Engineering\" (ACOMEN), Liège, Belgium."
       - year: 2022
         title: 3D Finite Element Models of Stacked Tapes Magnetic Shields
-        authors: "<strong>J. Dular</strong> et al."
+        authors: "<strong>J. Dular</strong>, S. Brialmont, P. Vanderbemden, C. Geuzaine, B. Vanderheyden"
         venue: Oral presentation at the 8th International Workshop on Numerical Modelling of High Temperature Superconductors, Nancy, France.
       - year: 2021
         title: Stability of HA and TA Coupled Formulations for HTS Modelling
-        authors: "<strong>J. Dular</strong> et al."
+        authors: "<strong>J. Dular</strong>, M. Harutyunyan, L. Bortot, S. Schöps, B. Vanderheyden, C. Geuzaine"
         venue: Oral presentation at the 12th Symposium on Electric and Magnetic Fields (EMF), Liège, Belgium.
       - year: 2021
         title: Stability of HA and TA Coupled Formulations
-        authors: "<strong>J. Dular</strong> et al."
+        authors: "<strong>J. Dular</strong>, M. Harutyunyan, L. Bortot, S. Schöps, B. Vanderheyden, C. Geuzaine"
         venue: Invited oral presentation at the 7th International Workshop on Numerical Modelling of High Temperature Superconductors, Nancy, France.
       - year: 2021
         title: Superconductors in GetDP
-        authors: "<strong>J. Dular</strong> et al."
+        authors: "<strong>J. Dular</strong>"
         venue: "Two-hour lecture at the GetDP workshop, CERN, Switzerland."
       - year: 2020
         title: "Life-HTS — Finite Element Formulations for HTS, Practice Session"
-        authors: "<strong>J. Dular</strong> et al."
+        authors: "<strong>J. Dular</strong>"
         venue: Lecture at the 3rd International School on Numerical Modelling for Applied Superconductivity, Nancy, France.
       - year: 2019
         title: "Finite Element Models for Systems with High-Temperature Superconductors and Ferromagnetic Materials"
-        authors: "<strong>J. Dular</strong> et al."
+        authors: "<strong>J. Dular</strong>, C. Geuzaine, B. Vanderheyden"
         venue: Oral presentation at the 22nd International Conference on the Computation of Electromagnetic Fields (COMPUMAG), Paris, France. (Rita Trowbridge Prize 2019.)
   - id: posters
     title: Conference Posters
     items:
       - year: 2025
         title: Reduced Order Hysteretic Magnetization and Flux Models for Composite Superconductors
-        authors: "<strong>J. Dular</strong> et al."
+        authors: "<strong>J. Dular</strong>, A. Glock, A. Verweij, M. Wozniak"
         venue: Poster presentation at the 25th International Conference on the Computation of Electromagnetic Fields (COMPUMAG), Naples, Italy.
       - year: 2024
         title: "An a-h-formulation of vector hysteresis model for composite superconductors"
-        authors: "<strong>J. Dular</strong> et al."
+        authors: "<strong>J. Dular</strong>, A. Verweij, M. Wozniak"
         venue: Poster presentation at the Applied Superconductivity Conference (ASC), Salt Lake City, USA.
       - year: 2022
         title: "What Formulation Should One Choose for Modeling a 3D HTS Motor Pole with Ferromagnetic Materials?"
-        authors: "<strong>J. Dular</strong> et al."
+        authors: "<strong>J. Dular</strong>, K. Berger, C. Geuzaine, B. Vanderheyden"
         venue: Poster presentation at the 23rd International Conference on the Computation of Electromagnetic Fields (COMPUMAG), Cancun, Mexico.
       - year: 2022
         title: 2D FEM Calculation of AC Losses in Twisted Superconductors with a Helicoidal Transformation
-        authors: "<strong>J. Dular</strong> et al."
+        authors: "<strong>J. Dular</strong>, A. Nicolet, M. Wozniak, B. Vanderheyden, C. Geuzaine"
         venue: Poster presentation at the 23rd International Conference on the Computation of Electromagnetic Fields (COMPUMAG), Cancun, Mexico.
       - year: 2019
         title: Comparison of Finite Element Formulations for HTS and Ferromagnetic Materials
-        authors: "<strong>J. Dular</strong> et al."
+        authors: "<strong>J. Dular</strong>, C. Geuzaine, B. Vanderheyden"
         venue: Invited poster presentation at the 14th European Conference on Applied Superconductivity (EUCAS), Glasgow, United Kingdom.
