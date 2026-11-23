@@ -722,7 +722,26 @@ a.project-card:hover .project-link,
 .project-card-iterations {
   background:
     linear-gradient(105deg, var(--color-surface) 35%, rgba(255, 255, 255, 0.6) 55%, rgba(255, 255, 255, 0) 80%),
-    url("assets/iterations-newton.svg") right 0.5rem center / auto 104% no-repeat,
+    url("assets/iterations-newton.svg") right -2.25rem bottom -2.9rem / auto 104% no-repeat,
+    var(--color-surface);
+}
+
+/* Project cards with a light visual identity behind the text */
+.project-card-life-hts {
+  background: linear-gradient(105deg, var(--color-surface) 15%, color-mix(in srgb, #c1d596 55%, var(--color-surface)) 100%);
+}
+
+.project-card-fiqus {
+  background:
+    linear-gradient(105deg, var(--color-surface) 50%, rgba(255, 255, 255, 0.45) 75%, rgba(255, 255, 255, 0.3) 100%),
+    url("assets/fiqus-logo.svg") right 0.9rem bottom 0.7rem / auto 4.25rem no-repeat,
+    var(--color-surface);
+}
+
+.project-card-homogenization {
+  background:
+    linear-gradient(105deg, var(--color-surface) 35%, rgba(255, 255, 255, 0.7) 60%, rgba(255, 255, 255, 0.2) 100%),
+    url("assets/twisted-stack.png") right -1.4rem bottom -0.3rem / 10rem auto no-repeat,
     var(--color-surface);
 }
 
