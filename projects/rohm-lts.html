@@ -17,7 +17,10 @@
     <nav class="nav" aria-label="Main navigation">
       <a class="nav-logo" href="../index.html">
         <img class="nav-logo-photo" src="../assets/favicon.png" alt="">
-        Julien Dular
+        <span class="nav-identity">
+          <span class="nav-name">Julien Dular</span>
+          <span class="nav-role">FNRS - Post-Doctoral Researcher<span class="nav-role-fr"><span class="nav-role-sep"> - </span>Chargé de recherches</span></span>
+        </span>
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -34,7 +37,13 @@
             <li><a href="nonlinear-iterations.html">Nonlinear Iterations <span class="nav-badge">Interactive</span></a></li>
           </ul>
         </li>
-        <li><a href="../publications.html">Publications</a></li>
+        <li class="nav-item-dropdown">
+          <a href="../index.html#publications" class="nav-dropdown-trigger">Publications</a>
+          <ul class="nav-submenu" aria-label="Publication categories">
+            <li><a href="../index.html#publications">Main Publications</a></li>
+            <li><a href="../publications.html">All Publications</a></li>
+          </ul>
+        </li>
         <li><a href="../index.html#contact">Contact</a></li>
       </ul>
     </nav>
@@ -62,5 +71,6 @@
   </footer>
 
   <script src="../project-page.js"></script>
+  <script src="../nav.js"></script>
 </body>
 </html>

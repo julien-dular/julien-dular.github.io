@@ -18,7 +18,10 @@
     <nav class="nav" aria-label="Main navigation">
       <a class="nav-logo" href="index.html">
         <img class="nav-logo-photo" src="assets/favicon.png" alt="">
-        Julien Dular
+        <span class="nav-identity">
+          <span class="nav-name">Julien Dular</span>
+          <span class="nav-role">FNRS - Post-Doctoral Researcher<span class="nav-role-fr"><span class="nav-role-sep"> - </span>Chargé de recherches</span></span>
+        </span>
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
         <span></span>
@@ -27,15 +30,21 @@
       </button>
       <ul class="nav-menu" id="nav-menu">
         <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#projects">Projects</a></li>
         <li class="nav-item-dropdown">
-          <a href="publications.html" class="nav-dropdown-trigger active">Publications</a>
+          <a href="index.html#projects" class="nav-dropdown-trigger">Projects</a>
+          <ul class="nav-submenu" aria-label="Project links">
+            <li><a href="https://gitlab.onelab.info/life-hts/life-hts" target="_blank" rel="noopener noreferrer">Life-HTS</a></li>
+            <li><a href="https://steam.docs.cern.ch/tools/fiqus/" target="_blank" rel="noopener noreferrer">FiQuS</a></li>
+            <li><a href="projects/hts-homogenization.html">HTS Homogenization</a></li>
+            <li><a href="projects/rohm-lts.html">ROHM for LTS Strands <span class="nav-badge">Interactive</span></a></li>
+            <li><a href="projects/nonlinear-iterations.html">Nonlinear Iterations <span class="nav-badge">Interactive</span></a></li>
+          </ul>
+        </li>
+        <li class="nav-item-dropdown">
+          <a href="index.html#publications" class="nav-dropdown-trigger active">Publications</a>
           <ul class="nav-submenu" aria-label="Publication categories">
-            <li><a href="#first-author">Publications as First Author</a></li>
-            <li><a href="#co-author">Publications as Co-Author</a></li>
-            <li><a href="#accepted-under-review">Accepted and Under Review</a></li>
-            <li><a href="#oral-presentations">Conference Oral Presentations</a></li>
-            <li><a href="#posters">Conference Posters</a></li>
+            <li><a href="index.html#publications">Main Publications</a></li>
+            <li><a href="publications.html" class="active">All Publications</a></li>
           </ul>
         </li>
         <li><a href="index.html#contact">Contact</a></li>
@@ -66,5 +75,6 @@
   <script src="assets/vendor/js-yaml.min.js"></script>
   <script src="publications.js"></script>
   <script src="publications-page.js"></script>
+  <script src="nav.js"></script>
 </body>
 </html>

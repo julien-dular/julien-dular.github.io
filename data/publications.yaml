@@ -1,6 +1,7 @@
 categories:
   - id: first-author
     title: Publications as First Author
+    short: "First Author"
     items:
       - year: 2026
         main: true
@@ -102,6 +103,7 @@ categories:
             url: https://doi.org/10.1109/tasc.2019.2935429
   - id: co-author
     title: Publications as Co-Author
+    short: "Co-Author"
     items:
       - year: 2026
         title: "Current patterns and loss contributions in single-layer CORT cables carrying AC current"
@@ -258,6 +260,7 @@ categories:
             url: https://doi.org/10.1088/1361-6668/ac68a7
   - id: accepted-under-review
     title: Accepted and Under Review
+    short: "Accepted & Under Review"
     items:
       - year: 2026
         title: "RAT-EC: Introducing a New Open-Source 3D Volume-Integral Eddy-Current Module"
@@ -275,6 +278,7 @@ categories:
             url: https://arxiv.org/abs/2404.13333
   - id: oral-presentations
     title: Conference Oral Presentations
+    short: "Oral Presentations"
     items:
       - year: 2026
         title: Reduced order modelling and homogenization of superconducting wires and cables
@@ -330,6 +334,7 @@ categories:
         venue: Oral presentation at the 22nd International Conference on the Computation of Electromagnetic Fields (COMPUMAG), Paris, France. (Rita Trowbridge Prize 2019.)
   - id: posters
     title: Conference Posters
+    short: "Posters"
     items:
       - year: 2025
         title: Reduced Order Hysteretic Magnetization and Flux Models for Composite Superconductors

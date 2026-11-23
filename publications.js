@@ -56,8 +56,29 @@
 
     return `
       ${divider}
-      <h3 class="subsection-title" id="${category.id}">${category.title} (${publications.length})</h3>
-      <ol class="publication-list">${items}</ol>`;
+      <details class="publication-category" open>
+        <summary class="publication-category-header">
+          <h3 class="subsection-title" id="${category.id}">${category.title} (${publications.length})</h3>
+          <span class="publication-category-toggle" aria-hidden="true"></span>
+        </summary>
+        <ol class="publication-list">${items}</ol>
+      </details>`;
+  }
+
+  function renderPublicationSummary(categories) {
+    const links = categories
+      .map(
+        (category) => `
+          <li>
+            <a href="#${category.id}">
+              ${category.short || category.title}
+              <span class="publication-summary-count">${(category.items || []).length}</span>
+            </a>
+          </li>`
+      )
+      .join("");
+
+    return `<nav class="publication-summary" aria-label="Jump to a publication category"><ul>${links}</ul></nav>`;
   }
 
   function renderPreviewList(publications) {
@@ -84,9 +105,11 @@
       const total = countPapers(categories);
 
       if (grouped) {
-        container.innerHTML = categories
-          .map((category, index) => renderPublicationCategory(category, index === 0))
-          .join("");
+        container.innerHTML =
+          renderPublicationSummary(categories) +
+          categories
+            .map((category, index) => renderPublicationCategory(category, index === 0))
+            .join("");
       } else if (mainOnly) {
         const preview = getMainPublications(categories);
         container.innerHTML = preview.length
