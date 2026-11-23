@@ -21,6 +21,7 @@
   const publicationIds = [
     "first-author",
     "co-author",
+    "accepted-under-review",
     "oral-presentations",
     "posters",
   ];

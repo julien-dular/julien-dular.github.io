@@ -256,6 +256,23 @@ categories:
         links:
           - label: Paper
             url: https://doi.org/10.1088/1361-6668/ac68a7
+  - id: accepted-under-review
+    title: Accepted and Under Review
+    items:
+      - year: 2026
+        title: "RAT-EC: Introducing a New Open-Source 3D Volume-Integral Eddy-Current Module"
+        authors: "D. Mayr, J. van Nugteren, <strong>J. Dular</strong>, M. Wozniak, J. Smajic, J. Leuthold"
+        venue: Preprint, under review.
+        links:
+          - label: arXiv
+            url: https://arxiv.org/abs/2610.21315
+      - year: 2024
+        title: Parallel-in-Time Integration of Transient Phenomena in No-Insulation Superconducting Coils Using Parareal
+        authors: "E. Schnaubelt, M. Wozniak, <strong>J. Dular</strong>, I. Cortes Garcia, A. Verweij, S. Schöps"
+        venue: Accepted for publication in the proceedings of the 15th International Conference on Scientific Computing in Electrical Engineering (SCEE 2024), Darmstadt, Germany.
+        links:
+          - label: arXiv
+            url: https://arxiv.org/abs/2404.13333
   - id: oral-presentations
     title: Conference Oral Presentations
     items:
@@ -263,6 +280,10 @@ categories:
         title: Reduced order modelling and homogenization of superconducting wires and cables
         authors: "<strong>J. Dular</strong>, C. Halvarsson, L. Denis, E. Schnaubelt, M. Wozniak, B. Vanderheyden, C. Geuzaine"
         venue: Oral presentation at the 11ème Conférence Européenne sur les Méthodes Numériques en Électromagnétisme, Grenoble, France.
+      - year: 2026
+        title: Gmsh applications for finite element simulation of superconductors
+        authors: "<strong>J. Dular</strong>, C. Halvarsson, E. Schnaubelt, A. Verweij, M. Wozniak"
+        venue: Oral presentation at the First Gmsh User Meeting, Liège, Belgium.
       - year: 2026
         title: "AC Loss Modelling of HTS Stacked Tape Cables: Twisted or Non-Twisted"
         authors: "<strong>J. Dular</strong>, C. Halvarsson, E. Schnaubelt, A. Verweij, M. Wozniak"
