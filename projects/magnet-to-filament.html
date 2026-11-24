@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A scroll-driven zoom through a superconducting magnet, from the magnet to its cables, strands and filaments, and how each scale is modelled.">
+  <title>From Magnet to Filament — Julien Dular</title>
+  <link rel="icon" href="../assets/favicon.ico" sizes="32x32">
+  <link rel="icon" href="../assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="magnet-to-filament/zoom.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="nav-logo" href="../index.html">
+        <img class="nav-logo-photo" src="../assets/favicon.png" alt="">
+        <span class="nav-identity">
+          <span class="nav-name">Julien Dular</span>
+          <span class="nav-role">FNRS - Post-Doctoral Researcher<span class="nav-role-fr"><span class="nav-role-sep"> - </span>Chargé de recherches</span></span>
+        </span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="../index.html#about">About</a></li>
+        <li class="nav-item-dropdown">
+          <a href="../index.html#projects" class="nav-dropdown-trigger active">Projects</a>
+          <ul class="nav-submenu" aria-label="Project links">
+            <li><a href="magnet-to-filament.html" class="active">From Magnet to Filament <span class="nav-badge">Interactive</span></a></li>
+            <li><a href="hts-homogenization.html">HTS Homogenization</a></li>
+            <li><a href="rohm-lts.html">ROHM for LTS Strands <span class="nav-badge">Interactive</span></a></li>
+            <li><a href="nonlinear-iterations.html">Nonlinear Iterations <span class="nav-badge">Interactive</span></a></li>
+            <li><a href="https://steam.docs.cern.ch/tools/fiqus/" target="_blank" rel="noopener noreferrer">FiQuS</a></li>
+            <li><a href="https://gitlab.onelab.info/life-hts/life-hts" target="_blank" rel="noopener noreferrer">Life-HTS</a></li>
+          </ul>
+        </li>
+        <li class="nav-item-dropdown">
+          <a href="../index.html#publications" class="nav-dropdown-trigger">Publications</a>
+          <ul class="nav-submenu" aria-label="Publication categories">
+            <li><a href="../index.html#publications">Main Publications</a></li>
+            <li><a href="../publications.html">All Publications</a></li>
+          </ul>
+        </li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="mtf">
+    <div class="mtf-track" id="mtf-track">
+      <div class="mtf-stage">
+        <div class="mtf-world" aria-hidden="true"></div>
+
+        <section class="mtf-card mtf-card-intro">
+          <a class="mtf-back" href="../index.html#projects">← Back to projects</a>
+          <h1>From Magnet to Filament</h1>
+          <p>Superconducting magnets span many scales at once. Zoom in to see what is inside, and how each scale is modelled.</p>
+          <button type="button" class="mtf-hint">Scroll to zoom in <span class="mtf-hint-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 2.5v10M3.5 8.5 8 13l4.5-4.5"/></svg></span></button>
+        </section>
+
+        <section class="mtf-card">
+          <p class="mtf-eyebrow">Magnet</p>
+          <h2>Huge energy, tiny details</h2>
+          <p>Superconducting magnets bend and focus particle beams. The dipoles in one of the LHC's eight sectors store about 1.1 GJ, the energy of some 260 kg of TNT, so a sudden loss of superconductivity, a <em>quench</em>, must not dissipate in a single hot spot.</p>
+          <p class="mtf-key">Protecting a magnet requires simulating it, and its behaviour depends on structures far smaller than the magnet itself.</p>
+          <p class="mtf-note">One aperture of an LHC dipole, coloured by its magnetic field at nominal current (up to 8.7 T).</p>
+          <div class="mtf-links"><a href="https://steam.docs.cern.ch/tools/fiqus/" target="_blank" rel="noopener noreferrer">FiQuS, open-source simulator ↗</a><a href="https://cerncourier.com/a/safeguarding-the-superconducting-magnets/" target="_blank" rel="noopener noreferrer">Quench protection at the LHC ↗</a></div>
+        </section>
+
+        <section class="mtf-card">
+          <p class="mtf-eyebrow">Cable · homogenized</p>
+          <h2>To the magnet, a cable is one block</h2>
+          <p>A magnet has too many turns to resolve every strand. The <strong>DISCC</strong> model replaces each cable with an equivalent material that still captures the currents flowing between its strands.</p>
+          <p class="mtf-key">It can be included in magneto-thermal models of the whole magnet, where the losses it predicts heat up the coil.</p>
+          <div class="mtf-links"><a href="https://doi.org/10.1088/1361-6668/ae4a51" target="_blank" rel="noopener noreferrer">DISCC paper ↗</a></div>
+        </section>
+
+        <section class="mtf-card">
+          <figure class="mtf-3d"><img src="magnet-to-filament/img/rutherford-3d.webp" alt="3D view of a Rutherford cable made of twisted strands" width="820" height="298" loading="eager"><figcaption>In 3D: strands twist along the cable</figcaption></figure>
+          <p class="mtf-eyebrow">Cable · resolved</p>
+          <h2>Inside: twisted strands</h2>
+          <p>A Rutherford cable is a flat braid of twisted strands. The <strong>CATI</strong> method couples the strands in a 2D cross-section. Colours show the current in each strand.</p>
+          <p class="mtf-key">This detailed solution is used to build and check the homogenized cable model.</p>
+          <p class="mtf-note">Illustrative 36-strand Nb₃Sn cable during the same fast discharge: the transport current decays while coupling currents loop between the strands.</p>
+          <div class="mtf-links"><a href="https://doi.org/10.1109/TASC.2024.3520941" target="_blank" rel="noopener noreferrer">CATI for cables ↗</a></div>
+        </section>
+
+        <section class="mtf-card">
+          <p class="mtf-eyebrow">Strand · homogenized</p>
+          <h2>To the cable, a strand is one block too</h2>
+          <p>The <strong>ROHM</strong> and <strong>ROHF</strong> models summarize a whole strand with a small chain of cells, which reproduce its rate-dependent and hysteretic losses.</p>
+          <p class="mtf-key">Inspired by the energy-based hysteresis model for ferromagnetic materials, the cells are identified on CATI solutions and cover a wide range of excitations.</p>
+          <div class="mtf-links">
+            <a href="rohm-lts.html">Try the ROHM explorer →</a>
+            <a href="https://doi.org/10.1088/1361-6668/adb5cc" target="_blank" rel="noopener noreferrer">ROHM paper ↗</a>
+            <a href="https://doi.org/10.1109/tmag.2025.3613877" target="_blank" rel="noopener noreferrer">ROHF paper ↗</a>
+            <a href="https://doi.org/10.1108/03321640610634344" target="_blank" rel="noopener noreferrer">Energy-based hysteresis model ↗</a>
+          </div>
+        </section>
+
+        <section class="mtf-card">
+          <figure class="mtf-3d"><img src="magnet-to-filament/img/strand-3d.webp" alt="3D view of a strand with twisted filaments inside a copper matrix" width="820" height="369" loading="eager"><figcaption>In 3D: filaments twist along the strand</figcaption></figure>
+          <p class="mtf-eyebrow">Strand · resolved</p>
+          <h2>Inside: twisted filaments</h2>
+          <p>Each strand holds many superconducting filaments in a conducting matrix, twisted along its length. <strong>CATI</strong> turns this 3D twisted conductor into coupled 2D problems.</p>
+          <p class="mtf-key">Filaments screen the changing field, while coupling currents, limited by the twist, loop through the matrix. Both dissipate energy.</p>
+          <p class="mtf-note">Simplified 54-filament Nb₃Sn strand for future magnets, not the strand used in the LHC. The animation is an illustrative fast discharge, the kind of transient that quench protection must handle.</p>
+          <div class="mtf-links"><a href="https://doi.org/10.1088/1361-6668/ad650d" target="_blank" rel="noopener noreferrer">CATI paper ↗</a></div>
+        </section>
+
+        <section class="mtf-card">
+          <p class="mtf-eyebrow">Filament</p>
+          <h2>Where the loss begins</h2>
+          <p>As the field falls, a front of reversed current (blue against red) sweeps through the filament. Each small triangle is one finite element of the model.</p>
+          <p class="mtf-key">This sharply nonlinear behaviour causes macroscopic hysteresis, and makes the equations hard to solve.</p>
+          <div class="mtf-links"><a href="nonlinear-iterations.html">Why solvers struggle here →</a></div>
+        </section>
+
+        <nav class="mtf-rail" aria-label="Zoom levels">
+          <button type="button" data-level="1" data-stop="1">Magnet</button>
+          <button type="button" data-level="2" data-stop="2">Cable</button>
+          <button type="button" data-level="3" data-stop="4">Strand</button>
+          <button type="button" data-level="4" data-stop="6">Filament</button>
+          <span class="mtf-scale-value" aria-hidden="true"></span>
+        </nav>
+      </div>
+    </div>
+
+    <section class="section section-alt mtf-outro">
+      <div class="container">
+        <h2 class="section-title">Reduce, then homogenize</h2>
+        <p class="section-intro">The small scales cannot be ignored, but resolving them all in 3D is too expensive. The approach is a complete homogenization sequence from filament to magnet: at each scale, reduced-order models identified on detailed simulations provide an equivalent material for the scale above.</p>
+        <div class="project-page-links">
+          <a class="btn btn-secondary" href="rohm-lts.html">ROHM explorer →</a>
+          <a class="btn btn-secondary" href="nonlinear-iterations.html">Picard vs Newton–Raphson →</a>
+          <a class="btn btn-secondary" href="../publications.html">All publications →</a>
+        </div>
+        <p class="mtf-credit">The work on this homogenization sequence was conducted at CERN, in the <a href="https://mpe.web.cern.ch/" target="_blank" rel="noopener noreferrer">TE-MPE group</a>, and was supported by the <a href="https://hfm.web.cern.ch/" target="_blank" rel="noopener noreferrer">High Field Magnets (HFM) programme</a>.</p>
+        <p class="mtf-ai">The development of this application was assisted by Claude Opus 5.5, outputs and results were carefully checked but errors may remain. Please contact me if you find any, or if you have any question or suggestion for improvement. Thank you!</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Julien Dular.</p>
+    </div>
+  </footer>
+
+  <script src="../project-page.js"></script>
+  <script src="../nav.js"></script>
+  <script src="magnet-to-filament/sim-view.js"></script>
+  <script src="magnet-to-filament/zoom.js"></script>
+</body>
+</html>

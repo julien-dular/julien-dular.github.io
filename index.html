@@ -33,11 +33,12 @@
         <li class="nav-item-dropdown">
           <a href="#projects" class="nav-dropdown-trigger">Projects</a>
           <ul class="nav-submenu" aria-label="Project links">
-            <li><a href="https://gitlab.onelab.info/life-hts/life-hts" target="_blank" rel="noopener noreferrer">Life-HTS</a></li>
-            <li><a href="https://steam.docs.cern.ch/tools/fiqus/" target="_blank" rel="noopener noreferrer">FiQuS</a></li>
+            <li><a href="projects/magnet-to-filament.html">From Magnet to Filament <span class="nav-badge">Interactive</span></a></li>
             <li><a href="projects/hts-homogenization.html">HTS Homogenization</a></li>
             <li><a href="projects/rohm-lts.html">ROHM for LTS Strands <span class="nav-badge">Interactive</span></a></li>
             <li><a href="projects/nonlinear-iterations.html">Nonlinear Iterations <span class="nav-badge">Interactive</span></a></li>
+            <li><a href="https://steam.docs.cern.ch/tools/fiqus/" target="_blank" rel="noopener noreferrer">FiQuS</a></li>
+            <li><a href="https://gitlab.onelab.info/life-hts/life-hts" target="_blank" rel="noopener noreferrer">Life-HTS</a></li>
           </ul>
         </li>
         <li class="nav-item-dropdown">
@@ -103,20 +104,15 @@
         <h2 class="section-title">Projects</h2>
         <div class="project-carousel">
           <div class="project-track" role="region" aria-label="Projects">
-            <div class="project-card project-card-life-hts">
-              <h3>Life-HTS</h3>
-              <p>Finite element models and workflows for high-temperature superconductors and electromagnetic devices.</p>
-              <div class="project-links">
-                <a class="project-link" href="http://www.life-hts.uliege.be/" target="_blank" rel="noopener noreferrer">Visit website ↗</a>
-                <a class="project-link" href="https://gitlab.onelab.info/life-hts/life-hts" target="_blank" rel="noopener noreferrer">Models on GitLab ↗</a>
-              </div>
-            </div>
-            <a class="project-card project-card-fiqus" href="https://steam.docs.cern.ch/tools/fiqus/" target="_blank" rel="noopener noreferrer">
-              <h3>FiQuS</h3>
-              <p>Electro-thermal simulation framework for modelling transients in superconducting accelerator magnets.</p>
-              <span class="project-link">Visit website ↗</span>
+            <!-- Pairs: research overviews, interactive explorers, open-source codes -->
+            <a class="project-card project-card-zoom" href="projects/magnet-to-filament.html">
+              <span class="project-badge"><span aria-hidden="true">▶</span> Interactive</span>
+              <h3>From Magnet to Filament</h3>
+              <p>A zoom from an LHC dipole down to a single filament, with live FiQuS simulations and the model used at each scale.</p>
+              <span class="project-link">Zoom in →</span>
             </a>
             <a class="project-card project-card-homogenization" href="projects/hts-homogenization.html">
+              <span class="project-badge project-badge-ongoing"><span aria-hidden="true">●</span> Research ongoing</span>
               <h3>HTS Homogenization & ROM</h3>
               <p>Reduced-order hysteretic models and homogenization methods for HTS windings and composite conductors.</p>
               <span class="project-link">View project →</span>
@@ -133,6 +129,19 @@
               <p>Why nonlinear iterations can cycle for superconductors and ferromagnets, and how to avoid it.</p>
               <span class="project-link">Interactive explorer and tutorial →</span>
             </a>
+            <a class="project-card project-card-fiqus" href="https://steam.docs.cern.ch/tools/fiqus/" target="_blank" rel="noopener noreferrer">
+              <h3>FiQuS</h3>
+              <p>Electro-thermal simulation framework for modelling transients in superconducting accelerator magnets.</p>
+              <span class="project-link">Visit website ↗</span>
+            </a>
+            <div class="project-card project-card-life-hts">
+              <h3>Life-HTS</h3>
+              <p>Finite element models and workflows for high-temperature superconductors and electromagnetic devices.</p>
+              <div class="project-links">
+                <a class="project-link" href="http://www.life-hts.uliege.be/" target="_blank" rel="noopener noreferrer">Visit website ↗</a>
+                <a class="project-link" href="https://gitlab.onelab.info/life-hts/life-hts" target="_blank" rel="noopener noreferrer">Models on GitLab ↗</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

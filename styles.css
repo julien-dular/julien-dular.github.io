@@ -977,21 +977,16 @@ a:hover {
   --project-gap: 1rem;
 }
 
+/* Two columns, so that the cards read as pairs: research overviews, interactive explorers, open-source codes */
 .project-track {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--project-gap);
 }
 
 .project-carousel .project-card {
   min-height: 12rem;
   min-width: 0;
-}
-
-@media (max-width: 900px) {
-  .project-track {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 600px) {
@@ -1081,12 +1076,22 @@ a.project-card:hover .project-link,
   font-size: 0.6rem;
 }
 
+/* Work in progress: same pill, in the warm highlight colour */
+.project-badge-ongoing {
+  color: color-mix(in srgb, var(--color-highlight) 55%, #3d2f10);
+  background: color-mix(in srgb, var(--color-highlight) 16%, var(--color-surface));
+}
+
+.project-badge-ongoing span {
+  font-size: 0.5rem;
+}
+
 /* Card of the nonlinear iterations explorer: power law and Newton-Raphson iterations in the background
    (assets/iterations-newton.svg) */
 .project-card-iterations {
   background:
     linear-gradient(105deg, var(--color-surface) 35%, rgba(255, 255, 255, 0.6) 55%, rgba(255, 255, 255, 0) 80%),
-    url("assets/iterations-newton.svg") right -2.25rem bottom -2.9rem / auto 104% no-repeat,
+    url("assets/iterations-newton.svg") right -2.6rem bottom -3.6rem / auto 135% no-repeat,
     var(--color-surface);
 }
 
@@ -1098,14 +1103,64 @@ a.project-card:hover .project-link,
 .project-card-fiqus {
   background:
     linear-gradient(105deg, var(--color-surface) 50%, rgba(255, 255, 255, 0.45) 75%, rgba(255, 255, 255, 0.3) 100%),
-    url("assets/fiqus-logo.svg") right 0.9rem bottom 0.7rem / auto 4.25rem no-repeat,
+    url("assets/fiqus-logo.svg") right 1.4rem center / auto 6.5rem no-repeat,
     var(--color-surface);
+}
+
+/* Scroll-driven zoom: the LHC dipole coil coloured by its field (assets/magnet-coil.webp) */
+.project-card-zoom {
+  background:
+    linear-gradient(105deg, var(--color-surface) 50%, rgba(255, 255, 255, 0.55) 70%, rgba(255, 255, 255, 0.05) 92%),
+    url("assets/magnet-coil.webp") right -3.2rem center / auto 92% no-repeat,
+    var(--color-surface);
+  border-color: color-mix(in srgb, var(--color-accent) 25%, var(--color-border));
+}
+
+.project-card-zoom p {
+  max-width: 30rem;
+}
+
+@media (min-width: 601px) {
+  .project-card-zoom p {
+    max-width: 68%;
+  }
+
+  .project-card-fiqus p {
+    max-width: calc(100% - 7.5rem);
+  }
+}
+
+/* Phones: single column, so the background images go back to a smaller size and stay clear of the text */
+@media (max-width: 600px) {
+  .project-card-zoom {
+    background-position: 0 0, right -4.4rem center, 0 0;
+    background-size: auto, auto 78%, auto;
+  }
+
+  .project-card-zoom p {
+    max-width: 78%;
+  }
+
+  .project-card-homogenization {
+    background-position: 0 0, right -1.4rem bottom -0.3rem, 0 0;
+    background-size: auto, 10rem auto, auto;
+  }
+
+  .project-card-iterations {
+    background-position: 0 0, right -2.25rem bottom -2.9rem, 0 0;
+    background-size: auto, auto 104%, auto;
+  }
+
+  .project-card-fiqus {
+    background-position: 0 0, right 0.9rem bottom 0.7rem, 0 0;
+    background-size: auto, auto 4.25rem, auto;
+  }
 }
 
 .project-card-homogenization {
   background:
     linear-gradient(105deg, var(--color-surface) 35%, rgba(255, 255, 255, 0.7) 60%, rgba(255, 255, 255, 0.2) 100%),
-    url("assets/twisted-stack.png") right -1.4rem bottom -0.3rem / 10rem auto no-repeat,
+    url("assets/twisted-stack.png") right -1.8rem bottom -0.4rem / 15.5rem auto no-repeat,
     var(--color-surface);
 }
 
