@@ -86,25 +86,21 @@
     return id;
   }
 
+  // Two triangles per segment, not indexed: a fine mesh has more than 65536 line corners,
+  // beyond the reach of the 16-bit indices that WebGL 1 guarantees
   function lineGeometry(gl, verts, pairs) {
     const n = pairs.length / 2;
     if (!n) return null;
-    const data = new Float32Array(n * 24);
-    const indices = new Uint16Array(n * 6);
+    const corners = [[0, -1], [0, 1], [1, -1], [1, -1], [0, 1], [1, 1]];
+    const data = new Float32Array(n * 6 * corners.length);
     for (let e = 0; e < n; e += 1) {
       const a = pairs[2 * e];
       const b = pairs[2 * e + 1];
-      [[0, -1], [0, 1], [1, -1], [1, 1]].forEach(([t, side], k) => {
-        data.set([verts[2 * a], verts[2 * a + 1], verts[2 * b], verts[2 * b + 1], t, side], 24 * e + 6 * k);
+      corners.forEach(([t, side], k) => {
+        data.set([verts[2 * a], verts[2 * a + 1], verts[2 * b], verts[2 * b + 1], t, side], 36 * e + 6 * k);
       });
-      const v = 4 * e;
-      indices.set([v, v + 1, v + 2, v + 2, v + 1, v + 3], 6 * e);
     }
-    return {
-      data: buffer(gl, gl.ARRAY_BUFFER, data),
-      index: buffer(gl, gl.ELEMENT_ARRAY_BUFFER, indices),
-      count: indices.length,
-    };
+    return { data: buffer(gl, gl.ARRAY_BUFFER, data), count: n * corners.length };
   }
 
   function colorTexture(gl) {
@@ -227,8 +223,7 @@
       attribute(0, lines.data, 2, gl.FLOAT, false, 24, 0);
       attribute(1, lines.data, 2, gl.FLOAT, false, 24, 8);
       attribute(2, lines.data, 2, gl.FLOAT, false, 24, 16);
-      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, lines.index);
-      gl.drawElements(gl.TRIANGLES, lines.count, gl.UNSIGNED_SHORT, 0);
+      gl.drawArrays(gl.TRIANGLES, 0, lines.count);
     }
 
     function drawItem(item, a, b, mix) {
