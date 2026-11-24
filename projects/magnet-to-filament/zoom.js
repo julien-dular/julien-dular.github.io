@@ -79,9 +79,17 @@
     { layer: "strandRes", rect: [958, 580, 1120, 742], reserve: true },
   ];
 
+  // Close-up on the coil in the photo, between the photo and the magnet
+  const CLOSE_VIEW = { layer: "photo", rect: [915, 738, 1030, 848], full: true };
+
   // One stop per text card
   const STOPS = [0, 1, 2, 2, 3, 3, 4];
   const LAST = STOPS.length - 1;
+
+  // Scroll length of each step between stops: the first one holds the 3D coil sequence
+  const WEIGHTS = [2, 1, 1, 1, 1, 1];
+  const MARKS = WEIGHTS.reduce((marks, weight) => marks.concat(marks[marks.length - 1] + weight), [0]);
+  const TOTAL = MARKS[LAST];
 
   // Typical width of what is in view at each depth, in metres
   const SIZES = [3, 0.1, 0.01, 0.001, 0.000076];
@@ -123,11 +131,21 @@
     layer.opacity = -1;
   });
 
+  // Over the photo: a veil that dims it while the 3D coil lights up, then turns into the page background
+  const [veilDark, veilLight] = ["mtf-veil mtf-veil-dark", "mtf-veil mtf-veil-light"].map((className) => {
+    const element = document.createElement("div");
+    element.className = className;
+    return element;
+  });
+  const coilCanvas = document.createElement("canvas");
+  LAYERS.photo.el.after(veilDark, veilLight, coilCanvas);
+
   root.classList.add("is-enhanced");
 
   let width = 0;
   let height = 0;
   let cameras = [];
+  let closeCamera = null;
 
   function freeArea() {
     if (width <= 820) {
@@ -149,10 +167,11 @@
     const free = freeArea();
     const freeX = (free.left + free.right) / 2;
     if (simView) simView.resize(width, height);
+    if (coilView) coilView.resize(width, height);
     simBar.style.left = `${freeX}px`;
     simBar.style.top = `${free.bottom - SIM_RESERVE + 8}px`;
 
-    cameras = VIEWS.map((view) => {
+    function frame(view) {
       const layer = LAYERS[view.layer];
       const x0 = layer.ox + view.rect[0] * layer.sc;
       const y0 = layer.oy + view.rect[1] * layer.sc;
@@ -170,23 +189,31 @@
         };
       }
 
-      const bottom = view.reserve ? free.bottom - SIM_RESERVE : free.bottom;
-      const freeY = (free.top + bottom) / 2;
-      const s = Math.min((free.right - free.left) / w, (bottom - free.top) / h);
+      // No card is shown during the close-up, so it may use the whole width
+      const area = view.full && width > 820 ? { left: 28, right: width - 28, top: free.top, bottom: free.bottom } : free;
+      const centerX = (area.left + area.right) / 2;
+      const bottom = view.reserve ? area.bottom - SIM_RESERVE : area.bottom;
+      const centerY = (area.top + bottom) / 2;
+      const s = Math.min((area.right - area.left) / w, (bottom - area.top) / h);
       return {
         s,
-        x: x0 + w / 2 + (width / 2 - freeX) / s,
-        y: y0 + h / 2 + (height / 2 - freeY) / s,
+        x: x0 + w / 2 + (width / 2 - centerX) / s,
+        y: y0 + h / 2 + (height / 2 - centerY) / s,
       };
-    });
+    }
+
+    cameras = VIEWS.map(frame);
+    closeCamera = frame(CLOSE_VIEW);
+  }
+
+  function cameraAt(a, b, e) {
+    return a === b ? cameras[a] : cameraBetween(cameras[a], cameras[b], e);
   }
 
   // Exponential zoom, with the camera drifting so that the target grows smoothly into place
-  function cameraAt(a, b, e) {
-    if (a === b || e <= 0) return cameras[a];
-    if (e >= 1) return cameras[b];
-    const A = cameras[a];
-    const B = cameras[b];
+  function cameraBetween(A, B, e) {
+    if (e <= 0) return A;
+    if (e >= 1) return B;
     const s = Math.exp(Math.log(A.s) * (1 - e) + Math.log(B.s) * e);
     const t = (1 / s - 1 / A.s) / (1 / B.s - 1 / A.s);
     return { s, x: A.x + (B.x - A.x) * t, y: A.y + (B.y - A.y) * t };
@@ -207,10 +234,20 @@
     const e = smooth(0.07, 0.93, f);
     const a = STOPS[i];
     const b = STOPS[i + 1];
-    const depth = a === b ? a : a + (b - a) * e;
+    // From the photo to the magnet, with the 3D coil: close-up on the coil, which lights up (f up to 0.42),
+    // turns to face the viewer while the photo gives way (0.46 to 0.8), and takes the field colours (0.8 to 0.9)
+    const coilOn = coilReady && i === 0;
+    let camera = cameraAt(a, b, e);
+    let depth = a === b ? a : a + (b - a) * e;
+    if (coilOn) {
+      camera = f < 0.42
+        ? cameraBetween(cameras[0], closeCamera, smooth(0.04, 0.38, f))
+        : cameraBetween(closeCamera, cameras[1], smooth(0.46, 0.88, f));
+      // The scale menu and the size follow the actual zoom
+      depth = clamp(Math.log(camera.s / cameras[0].s) / Math.log(cameras[1].s / cameras[0].s), 0, 1);
+    }
     const base = Math.min(Math.floor(depth), 3);
     const frac = depth - base;
-    const camera = cameraAt(a, b, e);
 
     const cueShown = clamp(1 - rawPosition / 0.25, 0, 1);
     if (cueShown !== cueOpacity) {
@@ -234,6 +271,8 @@
         const shown = i > layer.conceal ? 1 : i === layer.conceal ? e : 0;
         opacity *= 1 - shown;
       }
+      if (coilOn && key === "photo") opacity = 1 - smooth(0.66, 0.7, f);
+      if (coilOn && key === "magnet") opacity = smooth(0.9, 0.95, f);
 
       if (Math.abs(opacity - layer.opacity) > 0.001) {
         layer.el.style.opacity = opacity;
@@ -264,6 +303,42 @@
     // The magnet disc hides the photo while it opens, then dissolves into the page background
     LAYERS.magnet.el.style.backgroundColor = `rgba(247, 247, 248, ${Math.max(LAYERS.photo.opacity, 0)})`;
 
+    const coilShown = coilOn ? smooth(0.2, 0.33, f) * (1 - smooth(0.94, 0.98, f)) : 0;
+    if (coilShown > 0.001) {
+      const r = smooth(0.46, 0.8, f);
+      const mix = (x, y) => x + (y - x) * r;
+      const magnet = LAYERS.magnet;
+      coilView.draw({
+        pose: {
+          yaw: mix(COIL_PHOTO.yaw, 0),
+          pitch: mix(COIL_PHOTO.pitch, 0),
+          inv: mix(COIL_PHOTO.inv, 0),
+          scale: mix(COIL_PHOTO.scale, 1),
+          center: [mix(COIL_PHOTO.center[0], magnet.anchor[0]), mix(COIL_PHOTO.center[1], magnet.anchor[1])],
+        },
+        screen: [
+          camera.s * magnet.sc,
+          (magnet.ox - camera.x) * camera.s + width / 2,
+          (magnet.oy - camera.y) * camera.s + height / 2,
+        ],
+        width,
+        height,
+        field: smooth(0.8, 0.9, f),
+        pipe: 1 - smooth(0.66, 0.8, f),
+      });
+    }
+    coilCanvas.style.opacity = coilShown;
+    coilCanvas.style.visibility = coilShown > 0.001 ? "visible" : "hidden";
+
+    // The photo dims while the coil lights up, then gives way to the page background, which clears to show the dots
+    const veils = coilOn
+      ? [0.6 * smooth(0.17, 0.32, f) * (1 - smooth(0.68, 0.7, f)), smooth(0.5, 0.68, f) * (1 - smooth(0.7, 0.8, f))]
+      : [0, 0];
+    [veilDark, veilLight].forEach((element, index) => {
+      element.style.opacity = veils[index];
+      element.style.visibility = veils[index] > 0.001 ? "visible" : "hidden";
+    });
+
     const octaves = Math.log2(camera.s / cameras[0].s) * 0.35;
     const g = octaves - Math.floor(octaves);
     dots.forEach((element) => {
@@ -273,7 +348,10 @@
 
     cards.forEach((card, index) => {
       const distance = Math.abs(position - index);
-      const opacity = 1 - smooth(0.3, 0.42, distance);
+      let opacity = 1 - smooth(0.3, 0.42, distance);
+      // The coil sequence plays without cards
+      if (coilOn && index === 0) opacity = 1 - smooth(0.1, 0.2, f);
+      if (coilOn && index === 1) opacity = smooth(0.84, 0.94, f);
       const direction = position < index ? 1 : -1;
       card.style.opacity = opacity;
       card.style.visibility = opacity > 0.01 ? "visible" : "hidden";
@@ -321,8 +399,10 @@
   }
 
   function update() {
-    const progress = clamp(-track.getBoundingClientRect().top / scrollRange(), 0, 1);
-    render(progress * LAST);
+    const units = clamp(-track.getBoundingClientRect().top / scrollRange(), 0, 1) * TOTAL;
+    let i = 0;
+    while (i < LAST - 1 && units >= MARKS[i + 1]) i += 1;
+    render(i + clamp((units - MARKS[i]) / WEIGHTS[i], 0, 1));
   }
 
   // Clicking a scale glides there slowly, and any manual scroll takes back control
@@ -336,12 +416,12 @@
   function glideTo(stop) {
     stopGlide();
     const from = window.scrollY;
-    const to = from + track.getBoundingClientRect().top + (stop / LAST) * scrollRange();
+    const to = from + track.getBoundingClientRect().top + (MARKS[stop] / TOTAL) * scrollRange();
     if (reduceMotion.matches) {
       window.scrollTo({ top: to, behavior: "instant" });
       return;
     }
-    const steps = Math.abs(to - from) / (scrollRange() / LAST);
+    const steps = Math.abs(to - from) / (scrollRange() / TOTAL);
     const duration = clamp(650 + 750 * steps, 1400, 4600);
     const start = performance.now();
 
@@ -486,6 +566,45 @@
   }, 4000);
   showSimButton(!reduceMotion.matches);
   showSimScale("average");
+
+  // 3D coil of the magnet figure, drawn in pixels of that figure. In the photo, it sits on the coil of the
+  // mock-up, about 2 m away: pose fitted on the tips of the front faces of both layers, and on the top edge
+  // of the beam pipe, which recedes along the magnet axis
+  const COIL_PX_PER_MM = 12.017;
+  const COIL_PHOTO = {
+    yaw: -23.17,
+    pitch: 21.44,
+    inv: 1 / (2100 * COIL_PX_PER_MM),
+    scale: 0.886,
+    center: [LAYERS.magnet.anchor[0] - 5.3 / LAYERS.magnet.scale, LAYERS.magnet.anchor[1] + 1.25 / LAYERS.magnet.scale],
+  };
+  // Visible in the photo: the inner layer stands 14 mm out of the outer one, both go 25 mm deep into the collars,
+  // and the beam pipe ends 66 mm in front of the coil
+  const COIL_SHAPE = {
+    depth: 25 * COIL_PX_PER_MM,
+    protrusion: 14 * COIL_PX_PER_MM,
+    innerRadius: 43.7 * COIL_PX_PER_MM,
+    pipe: { inner: 23 * COIL_PX_PER_MM, outer: 26.5 * COIL_PX_PER_MM, front: 66 * COIL_PX_PER_MM },
+  };
+  let coilReady = false;
+  const coilView = window.createCoilView && !reduceMotion.matches
+    ? window.createCoilView({
+        canvas: coilCanvas,
+        url: DATA + "magnet-coil.bin",
+        figure: { center: LAYERS.magnet.anchor, size: [LAYERS.magnet.w, LAYERS.magnet.h] },
+        image: LAYERS.magnet.el,
+        shape: COIL_SHAPE,
+        onReady() {
+          coilReady = true;
+          measure();
+          update();
+        },
+        onLost() {
+          coilReady = false;
+          update();
+        },
+      })
+    : null;
   simButton.addEventListener("click", () => {
     if (simView) showSimButton(simView.toggle());
   });

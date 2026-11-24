@@ -20,7 +20,7 @@ Then visit [http://localhost:8000](http://localhost:8000).
 ├── index.html             Home page (about, projects, main publications, contact)
 ├── publications.html      Full publication list
 ├── projects/              One page per project
-│   ├── magnet-to-filament/ Magnet-to-filament zoom (zoom.js, sim-view.js), with FiQuS results exported to data/ and img/
+│   ├── magnet-to-filament/ Magnet-to-filament zoom (zoom.js, sim-view.js, coil-view.js), with FiQuS results exported to data/ and img/
 │   ├── rohm-lts/explorer/ ROHM explorer module, copied from rohm-model/web by sync.sh (do not edit here)
 │   └── nonlinear-iterations/explorer/  Nonlinear iterations explorer, copied from nonlinear-iterations/web by sync.sh (do not edit here)
 ├── data/publications.yaml Publication data (source for both publication views)
