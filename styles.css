@@ -1043,16 +1043,8 @@ a.project-card:hover {
   color: var(--color-accent);
 }
 
-a.project-card:hover .project-link,
-.project-links .project-link:hover {
+a.project-card:hover .project-link {
   color: var(--color-accent-light);
-}
-
-/* Card with several separate links instead of a single link on the whole card */
-.project-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem 1.25rem;
 }
 
 /* Card leading to an interactive application: magnetization loops computed with the model in the
