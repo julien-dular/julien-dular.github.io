@@ -109,7 +109,8 @@
     layer.oy = parent ? parent.oy + layer.at[1] * parent.sc - layer.anchor[1] * layer.sc : 0;
 
     const img = document.createElement("img");
-    img.src = layer.src;
+    // Static fallbacks of the live simulations are only downloaded if WebGL cannot draw them (see loadFallbacks)
+    if (!layer.sim) img.src = layer.src;
     img.alt = "";
     img.width = layer.w;
     img.height = layer.h;
@@ -117,7 +118,7 @@
     if (layer.portal) img.className = "is-portal";
     world.appendChild(img);
     // Decode ahead of time, so that no figure flashes blank when the zoom reaches it
-    img.decode().catch(() => {});
+    if (!layer.sim) img.decode().catch(() => {});
     layer.el = img;
     layer.opacity = -1;
   });
@@ -441,6 +442,15 @@
     simScale.title = SCALES[key].title;
   }
 
+  function loadFallbacks() {
+    simKeys.forEach((key) => {
+      const layer = LAYERS[key];
+      if (layer.el.getAttribute("src")) return;
+      layer.el.src = layer.src;
+      layer.el.decode().catch(() => {});
+    });
+  }
+
   const simView = window.createSimView
     ? window.createSimView({
         canvas: simCanvas,
@@ -456,6 +466,7 @@
         },
         onLost() {
           simReady = false;
+          loadFallbacks();
           simKeys.forEach((key) => {
             LAYERS[key].el.style.display = "";
           });
@@ -468,6 +479,11 @@
         },
       })
     : null;
+  // Without WebGL, or while a slow connection is still loading the simulations, show the static figures
+  if (!simView) loadFallbacks();
+  else setTimeout(() => {
+    if (!simReady) loadFallbacks();
+  }, 4000);
   showSimButton(!reduceMotion.matches);
   showSimScale("average");
   simButton.addEventListener("click", () => {
